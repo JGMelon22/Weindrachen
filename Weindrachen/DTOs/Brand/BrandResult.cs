@@ -1,3 +1,4 @@
+using Weindrachen.DTOs.Wine;
 using Weindrachen.Models.Enums;
 
 namespace Weindrachen.DTOs.Brand;

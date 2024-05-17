@@ -6,5 +6,5 @@ public record GrapeResult
 {
     public int Id { get; init; }
     public string Name { get; init; } = string.Empty!;
-    public required IEnumerable<Country> Countries { get; init; }
+    public IEnumerable<Country> Countries { get; init; } = null!;
 }
