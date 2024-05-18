@@ -11,7 +11,6 @@ public record WineResult
     public bool IsDoc { get; init; }
     public float AlcoholicLevel { get; init; }
     public Country Country { get; init; }
-    public IEnumerable<GrapeWine> Grapes { get; init; } = null!;
-    public IEnumerable<Taste> PossibleTastes { get; init; } = null!;
+    public List<GrapeWine> Grapes { get; init; } = new();
+    public List<Taste> PossibleTastes { get; init; } = new();
 }
-

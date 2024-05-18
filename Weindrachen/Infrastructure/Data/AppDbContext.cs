@@ -1,11 +1,14 @@
 using Microsoft.EntityFrameworkCore;
+using Weindrachen.Infrastructure.Configuration;
 using Weindrachen.Models;
 
 namespace Weindrachen.Infrastructure.Data;
 
 public class AppDbContext : DbContext
 {
-    public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
+    public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
+    {
+    }
 
     public DbSet<Wine> Wines { get; set; }
     public DbSet<Grape> Grapes { get; set; }
@@ -15,5 +18,9 @@ public class AppDbContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
+        modelBuilder.ApplyConfiguration(new WineConfiguration());
+        modelBuilder.ApplyConfiguration(new GrapeConfiguration());
+        modelBuilder.ApplyConfiguration(new BrandConfiguration());
+        modelBuilder.ApplyConfiguration(new GrapeWineConfiguration());
     }
 }

@@ -3,7 +3,7 @@ namespace Weindrachen.Models;
 public class GrapeWine
 {
     public int GrapeId { get; set; }
-    public Grape Grape { get; set; } = null!;
+    public required Grape Grape { get; set; }
     public int WineId { get; set; }
-    public Wine Wine { get; set; } = null!;
+    public required Wine Wine { get; set; }
 }
