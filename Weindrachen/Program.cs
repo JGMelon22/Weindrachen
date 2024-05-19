@@ -1,4 +1,3 @@
-using Microsoft.EntityFrameworkCore;
 using Weindrachen.Infrastructure.Data;
 
 var builder = WebApplication.CreateBuilder(args);
