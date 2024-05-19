@@ -33,14 +33,9 @@ public class WineConfiguration : IEntityTypeConfiguration<Wine>
             .IsRequired();
 
         builder.Property(w => w.IsDoc)
-            .HasColumnType("BOOL")
+            .HasColumnType("TINYINT")
             .HasColumnName("is_doc")
-            .IsRequired();
-
-        builder.Property(w => w.AlcoholicLevel)
-            .HasColumnType("FLOAT")
-            .HasColumnName("alcoholic_level")
-            .IsRequired();
+            .HasDefaultValue(1);
 
         builder.Property(w => w.AlcoholicLevel)
             .HasColumnType("FLOAT")
@@ -52,9 +47,14 @@ public class WineConfiguration : IEntityTypeConfiguration<Wine>
             .HasColumnName("origin_country")
             .IsRequired();
 
-        builder.Property(w => w.PossibleTastes)
+        builder.Property(w => w.BrandId)
             .HasColumnType("INT")
-            .HasColumnName("possible_tastes")
+            .HasColumnName("brand_id")
+            .IsRequired();
+
+        builder.Property(w => w.PredominantFlavour)
+            .HasColumnType("INT")
+            .HasColumnName("predominant_flavour")
             .IsRequired();
 
         builder.HasOne(w => w.Brand)

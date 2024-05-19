@@ -17,7 +17,7 @@ public class BrandConfiguration : IEntityTypeConfiguration<Brand>
 
         builder.Property(b => b.Id)
             .HasColumnType("INT")
-            .HasColumnName("person_id")
+            .HasColumnName("brand_id")
             .ValueGeneratedOnAdd();
 
         builder.Property(b => b.Name)

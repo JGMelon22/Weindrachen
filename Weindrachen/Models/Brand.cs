@@ -7,5 +7,5 @@ public class Brand
     public int Id { get; set; }
     public string Name { get; set; } = string.Empty!;
     public Country OriginCountry { get; set; }
-    public List<Wine> Wines { get; set; } = new();
+    public IList<Wine> Wines { get; set; } = new List<Wine>();
 }
