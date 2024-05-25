@@ -1,4 +1,6 @@
 using Weindrachen.Infrastructure.Data;
+using Weindrachen.Infrastructure.Repositories;
+using Weindrachen.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +13,12 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 {
     options.UseMySQL(builder.Configuration.GetConnectionString("Default")!);
 });
+
+# region [Repository Register]
+
+builder.Services.AddScoped<IBrandRepository, BrandRepository>();
+
+# endregion
 
 var app = builder.Build();
 
