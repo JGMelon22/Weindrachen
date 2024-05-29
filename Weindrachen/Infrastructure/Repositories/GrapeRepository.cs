@@ -9,6 +9,7 @@ namespace Weindrachen.Infrastructure.Repositories;
 public class GrapeRepository : IGrapeRepository
 {
     private readonly AppDbContext _dbContext;
+
     public GrapeRepository(AppDbContext dbContext)
     {
         _dbContext = dbContext;
@@ -45,9 +46,9 @@ public class GrapeRepository : IGrapeRepository
         try
         {
             var grapes = await _dbContext.Grapes
-                .AsNoTracking()
-                .ToListAsync()
-                ?? throw new Exception("Grape list is empty!");
+                             .AsNoTracking()
+                             .ToListAsync()
+                         ?? throw new Exception("Grape list is empty!");
 
             var grapesResult = grapes.Select(GrapeMapper.GrapeToGrapeResult);
 
@@ -69,8 +70,8 @@ public class GrapeRepository : IGrapeRepository
         try
         {
             var grape = await _dbContext.Grapes
-                .FindAsync(id)
-                ?? throw new Exception($"Grape with id {id} not found!");
+                            .FindAsync(id)
+                        ?? throw new Exception($"Grape with id {id} not found!");
 
             var grapeResult = GrapeMapper.GrapeToGrapeResult(grape);
 
@@ -97,8 +98,8 @@ public class GrapeRepository : IGrapeRepository
         try
         {
             var grape = await _dbContext.Grapes
-                .FindAsync(id)
-                ?? throw new Exception($"Grape with id {id} not found!");
+                            .FindAsync(id)
+                        ?? throw new Exception($"Grape with id {id} not found!");
 
             GrapeMapper.ApplyUpdate(updatedGrape, grape);
 

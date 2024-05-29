@@ -9,6 +9,7 @@ namespace Weindrachen.Infrastructure.Repositories;
 public class BrandRepository : IBrandRepository
 {
     private readonly AppDbContext _dbContext;
+
     public BrandRepository(AppDbContext dbContext)
     {
         _dbContext = dbContext;
@@ -45,14 +46,13 @@ public class BrandRepository : IBrandRepository
         try
         {
             var brands = await _dbContext.Brands
-                .AsNoTracking()
-                .ToListAsync()
-                ?? throw new Exception("Brand list is empty!");
+                             .AsNoTracking()
+                             .ToListAsync()
+                         ?? throw new Exception("Brand list is empty!");
 
             var brandsResult = brands.Select(BrandMapper.BrandToBrandResult);
 
             serviceResponse.Data = brandsResult;
-
         }
         catch (Exception ex)
         {
@@ -70,8 +70,8 @@ public class BrandRepository : IBrandRepository
         try
         {
             var brand = await _dbContext.Brands
-                .FindAsync(id)
-                ?? throw new Exception($"Brand with id {id} not found!");
+                            .FindAsync(id)
+                        ?? throw new Exception($"Brand with id {id} not found!");
 
             serviceResponse.Data = BrandMapper.BrandToBrandResult(brand);
         }
@@ -91,8 +91,8 @@ public class BrandRepository : IBrandRepository
         try
         {
             var brand = await _dbContext.Brands
-                .FindAsync(id)
-                ?? throw new Exception($"Brand with id {id} not found!");
+                            .FindAsync(id)
+                        ?? throw new Exception($"Brand with id {id} not found!");
 
             _dbContext.Brands.Remove(brand);
             await _dbContext.SaveChangesAsync();
@@ -113,8 +113,8 @@ public class BrandRepository : IBrandRepository
         try
         {
             var brand = await _dbContext.Brands
-                .FindAsync(id)
-                ?? throw new Exception("Brand with id {id} not found!");
+                            .FindAsync(id)
+                        ?? throw new Exception("Brand with id {id} not found!");
 
             BrandMapper.ApplyUpdate(updatedBrand, brand);
 
