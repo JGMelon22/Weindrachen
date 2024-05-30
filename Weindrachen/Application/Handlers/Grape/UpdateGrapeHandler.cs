@@ -15,7 +15,8 @@ public class UpdateGrapeHandler : IRequestHandler<UpdateGrapeCommand, ServiceRes
         _grapeRepository = grapeRepository;
     }
 
-    public async Task<ServiceResponse<GrapeResult>> Handle(UpdateGrapeCommand request, CancellationToken cancellationToken)
+    public async Task<ServiceResponse<GrapeResult>> Handle(UpdateGrapeCommand request,
+        CancellationToken cancellationToken)
     {
         return await _grapeRepository.UpdateGrapeAsync(request.Id, request.UpdatedGrape);
     }

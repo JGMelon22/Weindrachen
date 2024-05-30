@@ -15,7 +15,8 @@ public class GetGrapesHandler : IRequestHandler<GetGrapesQuery, ServiceResponse<
         _grapeRepository = grapeRepository;
     }
 
-    public async Task<ServiceResponse<IEnumerable<GrapeResult>>> Handle(GetGrapesQuery request, CancellationToken cancellationToken)
+    public async Task<ServiceResponse<IEnumerable<GrapeResult>>> Handle(GetGrapesQuery request,
+        CancellationToken cancellationToken)
     {
         return await _grapeRepository.GetAllGrapesAsync();
     }

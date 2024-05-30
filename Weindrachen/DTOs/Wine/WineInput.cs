@@ -10,5 +10,5 @@ public record WineInput(
     float AlcoholicLevel,
     Country Country,
     ICollection<GrapeWine> Wines,
-    ICollection<Taste> PossibleTastes
+    Taste PredominantFlavour
 );

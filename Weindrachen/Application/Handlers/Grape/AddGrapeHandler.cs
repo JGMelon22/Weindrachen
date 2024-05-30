@@ -14,7 +14,7 @@ public class AddGrapeHandler : IRequestHandler<AddGrapeCommand, ServiceResponse<
     {
         _grapeRepository = grapeRepository;
     }
-    
+
     public async Task<ServiceResponse<GrapeResult>> Handle(AddGrapeCommand request, CancellationToken cancellationToken)
     {
         return await _grapeRepository.AddNewGrapeAsync(request.NewGrape);

@@ -8,14 +8,15 @@ namespace Weindrachen.Application.Handlers.Brand;
 
 public class GetBrandsHandler : IRequestHandler<GetBrandsQuery, ServiceResponse<IEnumerable<BrandResult>>>
 {
-    private IBrandRepository _brandRepository;
+    private readonly IBrandRepository _brandRepository;
 
     public GetBrandsHandler(IBrandRepository brandRepository)
     {
         _brandRepository = brandRepository;
     }
-    
-    public async Task<ServiceResponse<IEnumerable<BrandResult>>> Handle(GetBrandsQuery request, CancellationToken cancellationToken)
+
+    public async Task<ServiceResponse<IEnumerable<BrandResult>>> Handle(GetBrandsQuery request,
+        CancellationToken cancellationToken)
     {
         return await _brandRepository.GetAllBrandsAsync();
     }

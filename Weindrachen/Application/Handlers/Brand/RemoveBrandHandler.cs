@@ -7,7 +7,7 @@ namespace Weindrachen.Application.Handlers.Brand;
 
 public class RemoveBrandHandler : IRequestHandler<RemoveBrandCommand, ServiceResponse<bool>>
 {
-    private IBrandRepository _brandRepository;
+    private readonly IBrandRepository _brandRepository;
 
     public RemoveBrandHandler(IBrandRepository brandRepository)
     {

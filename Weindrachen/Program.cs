@@ -1,6 +1,11 @@
 using System.Reflection;
+using FluentValidation;
+using Weindrachen.DTOs.Brand;
+using Weindrachen.DTOs.Grape;
+using Weindrachen.DTOs.Wine;
 using Weindrachen.Infrastructure.Data;
 using Weindrachen.Infrastructure.Repositories;
+using Weindrachen.Infrastructure.Validators;
 using Weindrachen.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -28,6 +33,14 @@ builder.Services.AddScoped<IWineRepository, WineRepository>();
 builder.Services.AddMediatR(cfg =>
     cfg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly())
 );
+
+# endregion
+
+# region [Validators]
+
+builder.Services.AddScoped<IValidator<BrandInput>, BrandValidator>();
+builder.Services.AddScoped<IValidator<GrapeInput>, GrapeValidator>();
+builder.Services.AddScoped<IValidator<WineInput>, WineValidator>();
 
 # endregion
 

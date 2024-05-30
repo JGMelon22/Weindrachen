@@ -15,7 +15,8 @@ public class UpdateWineHandler : IRequestHandler<UpdateWineCommand, ServiceRespo
         _wineRepository = wineRepository;
     }
 
-    public async Task<ServiceResponse<WineResult>> Handle(UpdateWineCommand request, CancellationToken cancellationToken)
+    public async Task<ServiceResponse<WineResult>> Handle(UpdateWineCommand request,
+        CancellationToken cancellationToken)
     {
         return await _wineRepository.UpdateWineAsync(request.Id, request.UpdatedWine);
     }

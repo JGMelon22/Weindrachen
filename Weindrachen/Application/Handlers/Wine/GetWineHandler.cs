@@ -15,7 +15,8 @@ public class GetWineHandler : IRequestHandler<GetWinesQuery, ServiceResponse<IEn
         _wineRepository = wineRepository;
     }
 
-    public async Task<ServiceResponse<IEnumerable<WineResult>>> Handle(GetWinesQuery request, CancellationToken cancellationToken)
+    public async Task<ServiceResponse<IEnumerable<WineResult>>> Handle(GetWinesQuery request,
+        CancellationToken cancellationToken)
     {
         return await _wineRepository.GetAllWinesAsync();
     }

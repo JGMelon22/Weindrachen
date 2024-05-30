@@ -15,7 +15,8 @@ public class UpdateBrandHandler : IRequestHandler<UpdateBrandCommand, ServiceRes
         _brandRepository = brandRepository;
     }
 
-    public async Task<ServiceResponse<BrandResult>> Handle(UpdateBrandCommand request, CancellationToken cancellationToken)
+    public async Task<ServiceResponse<BrandResult>> Handle(UpdateBrandCommand request,
+        CancellationToken cancellationToken)
     {
         return await _brandRepository.UpdateBrandAsync(request.Id, request.UpdatedBrand);
     }

@@ -4,4 +4,4 @@ using Weindrachen.Models;
 
 namespace Weindrachen.Application.Queries.Wine;
 
-public record GetWinesQuery() : IRequest<ServiceResponse<IEnumerable<WineResult>>>;
+public record GetWinesQuery : IRequest<ServiceResponse<IEnumerable<WineResult>>>;

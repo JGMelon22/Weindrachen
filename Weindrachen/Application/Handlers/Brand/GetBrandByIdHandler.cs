@@ -15,7 +15,8 @@ public class GetBrandByIdHandler : IRequestHandler<GetBrandByIdQuery, ServiceRes
         _brandRepository = brandRepository;
     }
 
-    public async Task<ServiceResponse<BrandResult>> Handle(GetBrandByIdQuery request, CancellationToken cancellationToken)
+    public async Task<ServiceResponse<BrandResult>> Handle(GetBrandByIdQuery request,
+        CancellationToken cancellationToken)
     {
         return await _brandRepository.GetBrandByIdAsync(request.Id);
     }

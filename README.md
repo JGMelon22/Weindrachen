@@ -18,3 +18,4 @@
 - MySql.EntityFrameworkCore </br>
 - NSwag.AspNetCore </br>
 - Riok.Mapperly </br>
+- FluentValidation </br>

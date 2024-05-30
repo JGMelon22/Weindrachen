@@ -4,4 +4,4 @@ using Weindrachen.Models;
 
 namespace Weindrachen.Application.Queries.Brand;
 
-public record GetBrandsQuery() : IRequest<ServiceResponse<IEnumerable<BrandResult>>>;
+public record GetBrandsQuery : IRequest<ServiceResponse<IEnumerable<BrandResult>>>;

@@ -9,7 +9,7 @@ namespace Weindrachen.Application.Handlers.Brand;
 public class AddBrandHandler : IRequestHandler<AddBrandCommand, ServiceResponse<BrandResult>>
 {
     private readonly IBrandRepository _brandRepository;
-    
+
     public AddBrandHandler(IBrandRepository brandRepository)
     {
         _brandRepository = brandRepository;
