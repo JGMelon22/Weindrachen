@@ -1,4 +1,4 @@
-using Weindrachen.Models;
+using Weindrachen.DTOs.GrapeWine;
 using Weindrachen.Models.Enums;
 
 namespace Weindrachen.DTOs.Wine;
@@ -9,6 +9,7 @@ public record WineInput(
     bool IsDoc,
     float AlcoholicLevel,
     Country Country,
-    ICollection<GrapeWine> Wines,
+    int BrandId,
+    ICollection<GrapeWineInput> Grapes,
     Taste PredominantFlavour
 );

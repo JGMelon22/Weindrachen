@@ -1,4 +1,4 @@
-using Weindrachen.Models;
+using Weindrachen.DTOs.Grape;
 using Weindrachen.Models.Enums;
 
 namespace Weindrachen.DTOs.Wine;
@@ -11,6 +11,7 @@ public record WineResult
     public bool IsDoc { get; init; }
     public float AlcoholicLevel { get; init; }
     public Country Country { get; init; }
+    public int GrapeId { get; init; }
+    public IEnumerable<GrapeResult> Grapes { get; init; } = new List<GrapeResult>();
     public Taste PredominantFlavour { get; init; }
-    public IEnumerable<GrapeWine> Grapes { get; init; } = new List<GrapeWine>();
 }
