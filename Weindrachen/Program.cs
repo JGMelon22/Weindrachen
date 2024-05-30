@@ -1,3 +1,4 @@
+using System.Reflection;
 using Weindrachen.Infrastructure.Data;
 using Weindrachen.Infrastructure.Repositories;
 using Weindrachen.Interfaces;
@@ -19,6 +20,14 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 builder.Services.AddScoped<IBrandRepository, BrandRepository>();
 builder.Services.AddScoped<IGrapeRepository, GrapeRepository>();
 builder.Services.AddScoped<IWineRepository, WineRepository>();
+
+# endregion
+
+# region [MediatR]
+
+builder.Services.AddMediatR(cfg =>
+    cfg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly())
+);
 
 # endregion
 
