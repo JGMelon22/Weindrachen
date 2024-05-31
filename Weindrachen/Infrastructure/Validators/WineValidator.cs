@@ -67,7 +67,7 @@ public class WineValidator : AbstractValidator<WineInput>
 
         # endregion
 
-        RuleFor(w => w.PredominantFlavour)
+        RuleFor(w => w.Taste)
             .NotEmpty()
             .WithMessage("A Predominant Flavour must be informed!")
             .NotNull()

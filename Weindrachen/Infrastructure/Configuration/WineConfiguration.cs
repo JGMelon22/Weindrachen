@@ -41,8 +41,9 @@ public class WineConfiguration : IEntityTypeConfiguration<Wine>
             .IsRequired();
 
         builder.Property(w => w.OriginCountry)
-            .HasColumnType("INT")
+            .HasColumnType("VARCHAR")
             .HasColumnName("origin_country")
+            .HasMaxLength(11)
             .IsRequired();
 
         builder.Property(w => w.BrandId)
@@ -50,9 +51,10 @@ public class WineConfiguration : IEntityTypeConfiguration<Wine>
             .HasColumnName("brand_id")
             .IsRequired();
 
-        builder.Property(w => w.PredominantFlavour)
-            .HasColumnType("INT")
+        builder.Property(w => w.Taste)
+            .HasColumnType("VARCHAR")
             .HasColumnName("predominant_flavour")
+            .HasMaxLength(12)
             .IsRequired();
 
         builder.HasOne(w => w.Brand)

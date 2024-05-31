@@ -1,5 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
-using MySql.EntityFrameworkCore.Metadata;
+﻿using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
@@ -12,50 +12,55 @@ namespace Weindrachen.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterDatabase()
-                .Annotation("MySQL:Charset", "utf8mb4");
+                .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
                 name: "brands",
                 columns: table => new
                 {
                     brand_id = table.Column<int>(type: "INT", nullable: false)
-                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
-                    brand_name = table.Column<string>(type: "VARCHAR(100)", maxLength: 100, nullable: false),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    brand_name = table.Column<string>(type: "VARCHAR(100)", maxLength: 100, nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     origin_country = table.Column<int>(type: "INT", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_brands", x => x.brand_id);
                 })
-                .Annotation("MySQL:Charset", "utf8mb4");
+                .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
                 name: "grapes",
                 columns: table => new
                 {
                     grape_id = table.Column<int>(type: "INT", nullable: false)
-                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     grape_name = table.Column<string>(type: "VARCHAR(100)", maxLength: 100, nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4")
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_grapes", x => x.grape_id);
                 })
-                .Annotation("MySQL:Charset", "utf8mb4");
+                .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
                 name: "wines",
                 columns: table => new
                 {
                     wine_id = table.Column<int>(type: "INT", nullable: false)
-                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
-                    wine_name = table.Column<string>(type: "VARCHAR(100)", maxLength: 100, nullable: false),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    wine_name = table.Column<string>(type: "VARCHAR(100)", maxLength: 100, nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     price = table.Column<decimal>(type: "DECIMAL(7,2)", precision: 7, scale: 2, nullable: false),
                     is_doc = table.Column<sbyte>(type: "TINYINT", nullable: false, defaultValue: (sbyte)1),
                     alcoholic_level = table.Column<float>(type: "FLOAT", nullable: false),
-                    origin_country = table.Column<int>(type: "INT", nullable: false),
+                    origin_country = table.Column<string>(type: "VARCHAR(11)", maxLength: 11, nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     brand_id = table.Column<int>(type: "INT", nullable: false),
-                    predominant_flavour = table.Column<int>(type: "INT", nullable: false)
+                    predominant_flavour = table.Column<string>(type: "VARCHAR(12)", maxLength: 12, nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4")
                 },
                 constraints: table =>
                 {
@@ -67,7 +72,7 @@ namespace Weindrachen.Migrations
                         principalColumn: "brand_id",
                         onDelete: ReferentialAction.Cascade);
                 })
-                .Annotation("MySQL:Charset", "utf8mb4");
+                .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
                 name: "grapes_wines",
@@ -92,7 +97,7 @@ namespace Weindrachen.Migrations
                         principalColumn: "wine_id",
                         onDelete: ReferentialAction.Cascade);
                 })
-                .Annotation("MySQL:Charset", "utf8mb4");
+                .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateIndex(
                 name: "idb_brands_id",

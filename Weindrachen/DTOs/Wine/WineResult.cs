@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using Weindrachen.DTOs.Grape;
 using Weindrachen.Models.Enums;
 
@@ -13,5 +14,7 @@ public record WineResult
     public Country Country { get; init; }
     public int GrapeId { get; init; }
     public IEnumerable<GrapeResult> Grapes { get; init; } = new List<GrapeResult>();
-    public Taste PredominantFlavour { get; init; }
+
+    [JsonConverter(typeof(JsonStringEnumConverter))]
+    public Taste Taste { get; init; }
 }

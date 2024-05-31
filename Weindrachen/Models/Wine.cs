@@ -12,6 +12,6 @@ public class Wine
     public Country OriginCountry { get; set; }
     public int BrandId { get; set; }
     public Brand Brand { get; set; } = new();
-    public Taste PredominantFlavour { get; set; }
+    public Taste Taste { get; set; }
     public IList<GrapeWine> GrapeWines { get; set; } = new List<GrapeWine>();
 }

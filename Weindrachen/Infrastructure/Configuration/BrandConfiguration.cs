@@ -24,7 +24,7 @@ public class BrandConfiguration : IEntityTypeConfiguration<Brand>
             .HasMaxLength(100)
             .IsRequired();
 
-        builder.Property(b => b.OriginCountry)
+        builder.Property(b => b.Country)
             .HasColumnType("INT")
             .HasColumnName("origin_country")
             .IsRequired();
