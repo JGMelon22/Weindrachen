@@ -15,7 +15,7 @@
 - MediatR </br>
 - Microsoft.EntityFrameworkCore </br>
 - Microsoft.EntityFrameworkCore.Design </br>
-- MySql.EntityFrameworkCore </br>
+- Pomelo.EntityFrameworkCore.MySql </br>
 - NSwag.AspNetCore </br>
 - Riok.Mapperly </br>
 - FluentValidation </br>
