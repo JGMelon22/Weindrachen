@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Mvc;
 using Weindrachen.Application.Commands.Wine;
 using Weindrachen.Application.Queries.Wine;
 using Weindrachen.DTOs.Wine;
-using Weindrachen.Models;
 
 namespace Weindrachen.Controllers;
 
@@ -12,8 +11,8 @@ namespace Weindrachen.Controllers;
 [Route("api/[controller]")]
 public class WinesController : ControllerBase
 {
-    private readonly IValidator<WineInput> _wineValidator;
     private readonly IMediator _mediator;
+    private readonly IValidator<WineInput> _wineValidator;
 
     public WinesController(IMediator mediator, IValidator<WineInput> wineValidator)
     {

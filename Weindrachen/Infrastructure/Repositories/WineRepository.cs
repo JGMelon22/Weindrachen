@@ -71,7 +71,7 @@ public class WineRepository : IWineRepository
         {
             var wine = await _dbContext.Wines
                            .FindAsync(id)
-                       ?? throw new Exception("Wine with id {id} not found!");
+                       ?? throw new Exception($"Wine with id {id} not found!");
 
             var wineResult = WineMapper.WineToWineResult(wine);
 
@@ -94,7 +94,7 @@ public class WineRepository : IWineRepository
         {
             var wine = await _dbContext.Wines
                            .FindAsync(id)
-                       ?? throw new Exception("Wine with id {id} not found!");
+                       ?? throw new Exception($"Wine with id {id} not found!");
 
             WineMapper.ApplyUpdate(updatedWine, wine);
 

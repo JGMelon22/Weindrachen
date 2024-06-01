@@ -53,19 +53,17 @@ public class WineValidator : AbstractValidator<WineInput>
             .Must(country => Enum.IsDefined(typeof(Country), country))
             .WithMessage("A valid origin Country must be informed!");
 
-        // TODO - Validate GrapeId and BrandId (possibly fix WineInput)
+        RuleFor(w => w.BrandId)
+            .NotEmpty()
+            .WithMessage("A BrandId must be informed!")
+            .NotNull()
+            .WithMessage("A BrandId must be informed!");
 
-        # region [MissingProperties]
-
-        #region BrandIdValidation
-
-        #endregion
-
-        #region GrapesValidations
-
-        #endregion
-
-        # endregion
+        RuleFor(w => w.GrapeWines)
+            .NotEmpty()
+            .WithMessage("A valid GrapeId must be informed!")
+            .NotNull()
+            .WithMessage("A valid GrapeId must be informed!");
 
         RuleFor(w => w.Taste)
             .NotEmpty()
