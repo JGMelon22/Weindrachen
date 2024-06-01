@@ -86,9 +86,27 @@ public class GrapeRepository : IGrapeRepository
         return serviceResponse;
     }
 
-    public Task<ServiceResponse<bool>> RemoveGrapeAsync(int id)
+    public async Task<ServiceResponse<bool>> RemoveGrapeAsync(int id)
     {
-        throw new NotImplementedException();
+
+        var serviceResponse = new ServiceResponse<bool>();
+
+        try
+        {
+            var grape = await _dbContext.Grapes
+                       .FindAsync(id)
+                   ?? throw new Exception($"Grape with id {id} not found!");
+
+            _dbContext.Grapes.Remove(grape);
+            await _dbContext.SaveChangesAsync();
+        }
+        catch (Exception ex)
+        {
+            serviceResponse.Success = false;
+            serviceResponse.Message = ex.Message;
+        }
+
+        return serviceResponse;
     }
 
     public async Task<ServiceResponse<GrapeResult>> UpdateGrapeAsync(int id, GrapeInput updatedGrape)
