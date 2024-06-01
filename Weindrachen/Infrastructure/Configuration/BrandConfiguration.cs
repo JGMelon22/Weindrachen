@@ -25,8 +25,9 @@ public class BrandConfiguration : IEntityTypeConfiguration<Brand>
             .IsRequired();
 
         builder.Property(b => b.Country)
-            .HasColumnType("INT")
+            .HasColumnType("VARCHAR")
             .HasColumnName("origin_country")
+            .HasMaxLength(11)
             .IsRequired();
     }
 }

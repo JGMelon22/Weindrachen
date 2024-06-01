@@ -1,5 +1,4 @@
 using FluentValidation;
-using FluentValidation.Results;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Weindrachen.Application.Commands.Brand;
@@ -12,8 +11,8 @@ namespace Weindrachen.Controllers;
 [Route("api/[controller]")]
 public class BrandsController : ControllerBase
 {
-    private readonly IMediator _mediator;
     private readonly IValidator<BrandInput> _brandValidator;
+    private readonly IMediator _mediator;
 
     public BrandsController(IMediator mediator, IValidator<BrandInput> brandValidator)
     {
@@ -24,7 +23,7 @@ public class BrandsController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> AddBrandAsync(BrandInput newBrand)
     {
-        ValidationResult validationResult = await _brandValidator.ValidateAsync(newBrand);
+        var validationResult = await _brandValidator.ValidateAsync(newBrand);
         if (!validationResult.IsValid)
             return BadRequest(string.Join(',', validationResult.Errors));
 
@@ -55,7 +54,7 @@ public class BrandsController : ControllerBase
     [HttpPatch("{id}")]
     public async Task<IActionResult> UpdateBrandAsync(int id, BrandInput updatedBrand)
     {
-        ValidationResult validationResult = await _brandValidator.ValidateAsync(updatedBrand);
+        var validationResult = await _brandValidator.ValidateAsync(updatedBrand);
         if (!validationResult.IsValid)
             return BadRequest(string.Join(',', validationResult.Errors));
 
@@ -69,7 +68,7 @@ public class BrandsController : ControllerBase
     public async Task<IActionResult> RemoveBrandAsync(int id)
     {
         var brand = await _mediator.Send(new RemoveBrandCommand(id));
-        return brand.Success != false
+        return brand.Success
             ? NoContent()
             : BadRequest(brand);
     }

@@ -1,5 +1,4 @@
 using FluentValidation;
-using FluentValidation.Results;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Weindrachen.Application.Commands.Grape;
@@ -12,8 +11,8 @@ namespace Weindrachen.Controllers;
 [Route("api/[controller]")]
 public class GrapesController : ControllerBase
 {
-    private readonly IMediator _mediator;
     private readonly IValidator<GrapeInput> _grapeValidator;
+    private readonly IMediator _mediator;
 
     public GrapesController(IMediator mediator, IValidator<GrapeInput> grapeValidator)
     {
@@ -24,7 +23,7 @@ public class GrapesController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> AddGrapeAsync(GrapeInput newGrape)
     {
-        ValidationResult validationResult = await _grapeValidator.ValidateAsync(newGrape);
+        var validationResult = await _grapeValidator.ValidateAsync(newGrape);
 
         if (!validationResult.IsValid)
             return BadRequest(string.Join(", ", validationResult.Errors));
@@ -58,7 +57,7 @@ public class GrapesController : ControllerBase
     [HttpPatch("{id}")]
     public async Task<IActionResult> UpdateGrapeAsync(int id, GrapeInput updatedGrape)
     {
-        ValidationResult validationResult = await _grapeValidator.ValidateAsync(updatedGrape);
+        var validationResult = await _grapeValidator.ValidateAsync(updatedGrape);
         if (!validationResult.IsValid)
             return BadRequest(string.Join(", ", validationResult.Errors));
 
@@ -72,7 +71,7 @@ public class GrapesController : ControllerBase
     public async Task<IActionResult> RemoveGrapeAsync(int id)
     {
         var grape = await _mediator.Send(new RemoveGrapeCommand(id));
-        return grape.Success != false
+        return grape.Success
             ? NoContent()
             : NotFound(grape);
     }

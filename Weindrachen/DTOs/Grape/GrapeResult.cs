@@ -1,6 +1,3 @@
-using System.Text.Json.Serialization;
-using Weindrachen.Models.Enums;
-
 namespace Weindrachen.DTOs.Grape;
 
 public record GrapeResult

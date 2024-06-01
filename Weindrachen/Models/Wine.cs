@@ -9,7 +9,7 @@ public class Wine
     public decimal Price { get; set; }
     public bool IsDoc { get; set; }
     public float AlcoholicLevel { get; set; }
-    public Country OriginCountry { get; set; }
+    public Country Country { get; set; }
     public int BrandId { get; set; }
     public Brand Brand { get; set; } = new();
     public Taste Taste { get; set; }

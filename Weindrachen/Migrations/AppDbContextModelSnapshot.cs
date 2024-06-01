@@ -30,15 +30,17 @@ namespace Weindrachen.Migrations
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("Country")
+                        .IsRequired()
+                        .HasMaxLength(11)
+                        .HasColumnType("VARCHAR")
+                        .HasColumnName("origin_country");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("VARCHAR")
                         .HasColumnName("brand_name");
-
-                    b.Property<int>("OriginCountry")
-                        .HasColumnType("INT")
-                        .HasColumnName("origin_country");
 
                     b.HasKey("Id");
 
@@ -111,6 +113,12 @@ namespace Weindrachen.Migrations
                         .HasColumnType("INT")
                         .HasColumnName("brand_id");
 
+                    b.Property<string>("Country")
+                        .IsRequired()
+                        .HasMaxLength(11)
+                        .HasColumnType("VARCHAR")
+                        .HasColumnName("origin_country");
+
                     b.Property<sbyte>("IsDoc")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TINYINT")
@@ -123,22 +131,16 @@ namespace Weindrachen.Migrations
                         .HasColumnType("VARCHAR")
                         .HasColumnName("wine_name");
 
-                    b.Property<string>("OriginCountry")
-                        .IsRequired()
-                        .HasMaxLength(11)
-                        .HasColumnType("VARCHAR")
-                        .HasColumnName("origin_country");
-
-                    b.Property<string>("PredominantFlavour")
-                        .IsRequired()
-                        .HasMaxLength(12)
-                        .HasColumnType("VARCHAR")
-                        .HasColumnName("predominant_flavour");
-
                     b.Property<decimal>("Price")
                         .HasPrecision(7, 2)
                         .HasColumnType("DECIMAL")
                         .HasColumnName("price");
+
+                    b.Property<string>("Taste")
+                        .IsRequired()
+                        .HasMaxLength(12)
+                        .HasColumnType("VARCHAR")
+                        .HasColumnName("predominant_flavour");
 
                     b.HasKey("Id");
 

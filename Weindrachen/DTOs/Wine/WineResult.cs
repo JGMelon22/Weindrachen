@@ -11,9 +11,8 @@ public record WineResult
     public decimal Price { get; init; }
     public bool IsDoc { get; init; }
     public float AlcoholicLevel { get; init; }
+    [property: JsonConverter(typeof(JsonStringEnumConverter))]
     public Country Country { get; init; }
-    public int GrapeId { get; init; }
-    public IEnumerable<GrapeResult> Grapes { get; init; } = new List<GrapeResult>();
 
     [JsonConverter(typeof(JsonStringEnumConverter))]
     public Taste Taste { get; init; }

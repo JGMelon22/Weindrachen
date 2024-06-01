@@ -9,9 +9,10 @@ public record WineInput(
     decimal Price,
     bool IsDoc,
     float AlcoholicLevel,
+    [property: JsonConverter(typeof(JsonStringEnumConverter))]
     Country Country,
     int BrandId,
-    ICollection<GrapeWineInput> Grapes,
+    ICollection<GrapeWineInput> GrapeWines,
     [property: JsonConverter(typeof(JsonStringEnumConverter))]
     Taste Taste
 );

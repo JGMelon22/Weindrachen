@@ -88,14 +88,13 @@ public class GrapeRepository : IGrapeRepository
 
     public async Task<ServiceResponse<bool>> RemoveGrapeAsync(int id)
     {
-
         var serviceResponse = new ServiceResponse<bool>();
 
         try
         {
             var grape = await _dbContext.Grapes
-                       .FindAsync(id)
-                   ?? throw new Exception($"Grape with id {id} not found!");
+                            .FindAsync(id)
+                        ?? throw new Exception($"Grape with id {id} not found!");
 
             _dbContext.Grapes.Remove(grape);
             await _dbContext.SaveChangesAsync();

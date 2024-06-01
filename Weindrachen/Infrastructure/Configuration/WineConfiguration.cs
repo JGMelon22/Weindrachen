@@ -40,7 +40,7 @@ public class WineConfiguration : IEntityTypeConfiguration<Wine>
             .HasColumnName("alcoholic_level")
             .IsRequired();
 
-        builder.Property(w => w.OriginCountry)
+        builder.Property(w => w.Country)
             .HasColumnType("VARCHAR")
             .HasColumnName("origin_country")
             .HasMaxLength(11)

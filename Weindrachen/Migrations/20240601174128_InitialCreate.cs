@@ -22,7 +22,8 @@ namespace Weindrachen.Migrations
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     brand_name = table.Column<string>(type: "VARCHAR(100)", maxLength: 100, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    origin_country = table.Column<int>(type: "INT", nullable: false)
+                    origin_country = table.Column<string>(type: "VARCHAR(11)", maxLength: 11, nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4")
                 },
                 constraints: table =>
                 {
