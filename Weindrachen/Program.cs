@@ -18,7 +18,7 @@ builder.Services.AddOpenApiDocument();
 builder.Services.AddDbContext<AppDbContext>(options =>
 {
     options.UseMySql(builder.Configuration.GetConnectionString("Default"),
-        new MySqlServerVersion(new Version(8, 3, 0)));
+        new MySqlServerVersion(new Version(8, 4, 0)));
 });
 
 # region [Repository Register]
