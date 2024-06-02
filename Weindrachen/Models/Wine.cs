@@ -11,7 +11,7 @@ public class Wine
     public float AlcoholicLevel { get; set; }
     public Country Country { get; set; }
     public int BrandId { get; set; }
-    public Brand Brand { get; set; } = new();
+    public Brand Brand { get; set; } = null!;
     public Taste Taste { get; set; }
     public IList<GrapeWine> GrapeWines { get; set; } = new List<GrapeWine>();
 }
