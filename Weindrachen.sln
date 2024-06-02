@@ -5,6 +5,8 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Weindrachen", "Weindrachen\Weindrachen.csproj", "{6E650BBB-DD86-49BF-AC54-AD7161C4510C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Weindrachen.Tests", "Weindrachen.Tests\Weindrachen.Tests.csproj", "{D821CC26-F54A-4CEE-8218-7C510711D813}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{6E650BBB-DD86-49BF-AC54-AD7161C4510C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6E650BBB-DD86-49BF-AC54-AD7161C4510C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6E650BBB-DD86-49BF-AC54-AD7161C4510C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D821CC26-F54A-4CEE-8218-7C510711D813}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D821CC26-F54A-4CEE-8218-7C510711D813}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D821CC26-F54A-4CEE-8218-7C510711D813}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D821CC26-F54A-4CEE-8218-7C510711D813}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
