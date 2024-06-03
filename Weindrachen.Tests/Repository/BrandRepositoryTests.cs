@@ -82,7 +82,7 @@ public class BrandRepositoryTests
     }
 
     [Fact]
-    public void BrandRepository_RemoveBrand_ReturnsBrands()
+    public void BrandRepository_RemoveBrand_ReturnsSuccess()
     {
         int id = 3;
 

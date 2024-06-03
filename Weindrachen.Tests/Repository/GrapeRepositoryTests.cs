@@ -81,7 +81,7 @@ public class GrapeRepositoryTests
     }
 
     [Fact]
-    public void GrapeRepository_RemoveGrape_ReturnsGrapes()
+    public void GrapeRepository_RemoveGrape_ReturnsSuccess()
     {
         int id = 3;
 
