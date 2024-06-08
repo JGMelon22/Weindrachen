@@ -83,4 +83,15 @@ public class BrandGrapeWineRepositoryTests
         result.Should().NotBeNull();
         result.Should().BeOfType<Task<ServiceResponse<IEnumerable<BrandGrapeWineResult>>>>();
     }
+
+    [Fact]
+    public void BrandGrapeWineRepository_GetWinesInformationByIdAsync_ReturnsWineInfo()
+    {
+        int id = 1;
+
+        var result = _repository.GetWineInformationByIdAsync(id);
+
+        result.Should().NotBeNull();
+        result.Should().BeOfType<Task<ServiceResponse<BrandGrapeWineResult>>>();
+    }
 }
