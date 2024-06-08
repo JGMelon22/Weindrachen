@@ -2,6 +2,7 @@ using FluentValidation;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Weindrachen.Application.Commands.Wine;
+using Weindrachen.Application.Queries.BrandGrapeWine;
 using Weindrachen.Application.Queries.Wine;
 using Weindrachen.DTOs.Wine;
 
@@ -39,6 +40,15 @@ public class WinesController : ControllerBase
         var wines = await _mediator.Send(new GetWinesQuery());
         return wines.Data != null
             ? Ok(wines)
+            : NoContent();
+    }
+
+    [HttpGet("all-information")]
+    public async Task<IActionResult> GetAllWinesInformationAsync()
+    {
+        var allWinesInfo = await _mediator.Send(new GetAllWineInfoQuery());
+        return allWinesInfo.Data != null
+            ? Ok(allWinesInfo)
             : NoContent();
     }
 

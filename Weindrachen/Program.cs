@@ -26,6 +26,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 builder.Services.AddScoped<IBrandRepository, BrandRepository>();
 builder.Services.AddScoped<IGrapeRepository, GrapeRepository>();
 builder.Services.AddScoped<IWineRepository, WineRepository>();
+builder.Services.AddScoped<IBrandGrapeWineRepository, BrandGrapeWineRepository>();
 
 # endregion
 
