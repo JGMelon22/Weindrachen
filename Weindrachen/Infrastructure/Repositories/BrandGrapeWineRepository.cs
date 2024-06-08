@@ -33,15 +33,50 @@ public class BrandGrapeWineRepository : IBrandGrapeWineRepository
                                              Country = w.Country,
                                              AlcoholicLevel = w.AlcoholicLevel,
                                              Taste = w.Taste,
-                                             // BrandId = b.Id,
                                              BrandName = b.Name,
-                                             // GrapeId = g.Id,
                                              GrapeName = g.Name
                                          }).ToListAsync();
 
             serviceResponse.Data = brandGrapeWines;
         }
 
+        catch (Exception ex)
+        {
+            serviceResponse.Success = false;
+            serviceResponse.Message = ex.Message;
+        }
+
+        return serviceResponse;
+    }
+
+    public async Task<ServiceResponse<BrandGrapeWineResult>> GetWineInformationByIdAsync(int id)
+    {
+        var serviceResponse = new ServiceResponse<BrandGrapeWineResult>();
+
+        try
+        {
+            var brandGrapeWine = await (from g in _dbContext.Grapes
+                                        join gw in _dbContext.GrapesWines on g.Id equals gw.GrapeId
+                                        join w in _dbContext.Wines on gw.WineId equals w.Id
+                                        join b in _dbContext.Brands on w.BrandId equals b.Id
+                                        where w.Id == id
+                                        select new BrandGrapeWineResult
+                                        {
+                                            WineId = w.Id,
+                                            WineName = w.Name,
+                                            Price = w.Price,
+                                            IsDoc = w.IsDoc,
+                                            Country = w.Country,
+                                            AlcoholicLevel = w.AlcoholicLevel,
+                                            Taste = w.Taste,
+                                            BrandName = b.Name,
+                                            GrapeName = g.Name
+                                        }).Where(x => x.WineId == id)
+                                       .FirstOrDefaultAsync()
+                                       ?? throw new Exception($"Wine with {id} not found!");
+
+            serviceResponse.Data = brandGrapeWine;
+        }
         catch (Exception ex)
         {
             serviceResponse.Success = false;

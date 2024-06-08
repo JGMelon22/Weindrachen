@@ -6,4 +6,5 @@ namespace Weindrachen.Interfaces;
 public interface IBrandGrapeWineRepository
 {
     Task<ServiceResponse<IEnumerable<BrandGrapeWineResult>>> GetAllWinesInformationAsync();
+    Task<ServiceResponse<BrandGrapeWineResult>> GetWineInformationByIdAsync(int id);
 }

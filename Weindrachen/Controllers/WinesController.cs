@@ -43,15 +43,6 @@ public class WinesController : ControllerBase
             : NoContent();
     }
 
-    [HttpGet("all-information")]
-    public async Task<IActionResult> GetAllWinesInformationAsync()
-    {
-        var allWinesInfo = await _mediator.Send(new GetAllWineInfoQuery());
-        return allWinesInfo.Data != null
-            ? Ok(allWinesInfo)
-            : NoContent();
-    }
-
     [HttpGet("{id}")]
     public async Task<IActionResult> GetWineByIdAsync(int id)
     {
@@ -61,6 +52,24 @@ public class WinesController : ControllerBase
             : NotFound(wine);
     }
 
+    [HttpGet("all-information")]
+    public async Task<IActionResult> GetAllWinesInformationAsync()
+    {
+        var allWinesInfo = await _mediator.Send(new GetAllWineInfoQuery());
+        return allWinesInfo.Data != null
+            ? Ok(allWinesInfo)
+            : NoContent();
+    }
+
+
+    [HttpGet("all-information/{id}")]
+    public async Task<IActionResult> GetAllWinesInformationByIdAsync(int id)
+    {
+        var allWinesInfo = await _mediator.Send(new GetAllWineInfoByIdQuery(id));
+        return allWinesInfo.Data != null
+            ? Ok(allWinesInfo)
+            : NotFound(allWinesInfo);
+    }
     [HttpPatch("{id}")]
     public async Task<IActionResult> UpdateWineAsync(int id, WineInput updatedWine)
     {
