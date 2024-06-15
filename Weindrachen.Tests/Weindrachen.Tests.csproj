@@ -11,17 +11,17 @@
 
     <ItemGroup>
         <PackageReference Include="coverlet.collector" Version="6.0.2">
-          <PrivateAssets>all</PrivateAssets>
-          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="FakeItEasy" Version="8.2.0" />
-        <PackageReference Include="FluentAssertions" Version="6.12.0" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="8.0.6" />
-        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.10.0" />
-        <PackageReference Include="xunit" Version="2.8.1" />
+        <PackageReference Include="FakeItEasy" Version="8.2.0"/>
+        <PackageReference Include="FluentAssertions" Version="6.12.0"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="8.0.6"/>
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.10.0"/>
+        <PackageReference Include="xunit" Version="2.8.1"/>
         <PackageReference Include="xunit.runner.visualstudio" Version="2.8.1">
-          <PrivateAssets>all</PrivateAssets>
-          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
     </ItemGroup>
 
@@ -30,13 +30,13 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Weindrachen\Weindrachen.csproj" />
+        <ProjectReference Include="..\Weindrachen\Weindrachen.csproj"/>
     </ItemGroup>
 
     <ItemGroup>
-      <Reference Include="xunit.core">
-        <HintPath>..\..\..\..\.nuget\packages\xunit.extensibility.core\2.8.1\lib\netstandard1.1\xunit.core.dll</HintPath>
-      </Reference>
+        <Reference Include="xunit.core">
+            <HintPath>..\..\..\..\.nuget\packages\xunit.extensibility.core\2.8.1\lib\netstandard1.1\xunit.core.dll</HintPath>
+        </Reference>
     </ItemGroup>
 
 </Project>

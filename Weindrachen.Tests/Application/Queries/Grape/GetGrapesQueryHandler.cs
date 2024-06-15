@@ -24,9 +24,9 @@ public class GetGrapesQueryHandler
         var handler = new GetGrapesHandler(_grapeRepository);
         var grapesResult = new List<GrapeResult>
         {
-            new GrapeResult { Id = 1, Name = "Bobal" },
-            new GrapeResult { Id = 2, Name = "Cabernet Sauvignon" },
-            new GrapeResult { Id = 3, Name = "Syrah" }
+            new() { Id = 1, Name = "Bobal" },
+            new() { Id = 2, Name = "Cabernet Sauvignon" },
+            new() { Id = 3, Name = "Syrah" }
         };
         var serviceResponse = new ServiceResponse<IEnumerable<GrapeResult>>
         {

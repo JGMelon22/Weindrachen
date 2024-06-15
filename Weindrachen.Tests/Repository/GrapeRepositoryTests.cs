@@ -4,8 +4,6 @@ using Weindrachen.DTOs.Grape;
 using Weindrachen.Infrastructure.Data;
 using Weindrachen.Infrastructure.Repositories;
 using Weindrachen.Models;
-using Weindrachen.Models.Enums;
-using Xunit;
 
 namespace Weindrachen.Tests.Repository;
 
@@ -27,13 +25,11 @@ public class GrapeRepositoryTests
 
         if (_dbContext.Grapes.Count() == 0)
         {
-            for (int i = 0; i < 10; i++)
-            {
+            for (var i = 0; i < 10; i++)
                 _dbContext.Grapes.Add(new Grape
                 {
                     Name = "New Fake Grape"
                 });
-            }
 
             _dbContext.SaveChanges();
         }
@@ -60,7 +56,7 @@ public class GrapeRepositoryTests
     [Fact]
     public void GrapeRepository_GetGrapeById_ReturnsGrape()
     {
-        int id = 1;
+        var id = 1;
 
         var result = _repository.GetGrapeByIdAsync(id);
 
@@ -71,7 +67,7 @@ public class GrapeRepositoryTests
     [Fact]
     public void GrapeRepository_UpdateGrape_ReturnsGrapes()
     {
-        int id = 4;
+        var id = 4;
         var updatedGrape = new GrapeInput("Cabernet Sauvignon");
 
         var result = _repository.UpdateGrapeAsync(id, updatedGrape);
@@ -83,7 +79,7 @@ public class GrapeRepositoryTests
     [Fact]
     public void GrapeRepository_RemoveGrape_ReturnsSuccess()
     {
-        int id = 3;
+        var id = 3;
 
         var result = _repository.RemoveGrapeAsync(id);
 

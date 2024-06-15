@@ -9,7 +9,6 @@ using Weindrachen.Models.Enums;
 
 namespace Weindrachen.Tests.Application.Queries.Brand;
 
-
 public class GetBrandByIdQueryHandlerTests
 {
     private readonly IBrandRepository _brandRepository;
@@ -23,7 +22,7 @@ public class GetBrandByIdQueryHandlerTests
     public async Task GetBrandByIdQueryHandler_Handle_ReturnsBrandResult()
     {
         // Arrange
-        int brandId = 1;
+        var brandId = 1;
         var handler = new GetBrandByIdHandler(_brandRepository);
         var brandResult = new BrandResult
         {
@@ -36,8 +35,7 @@ public class GetBrandByIdQueryHandlerTests
             Data = brandResult
         };
 
-        A.CallTo(() => _brandRepository.GetBrandByIdAsync(brandId)).
-            Returns(Task.FromResult(serviceResponse));
+        A.CallTo(() => _brandRepository.GetBrandByIdAsync(brandId)).Returns(Task.FromResult(serviceResponse));
 
         var query = new GetBrandByIdQuery(brandId);
 

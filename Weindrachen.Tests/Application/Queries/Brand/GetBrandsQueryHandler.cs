@@ -24,9 +24,9 @@ public class GetBrandsQueryHandler
         var handler = new GetBrandsHandler(_brandRepository);
         var brandsResult = new List<BrandResult>
         {
-            new BrandResult { Id = 1, Name = "Concha y Toro" },
-            new BrandResult { Id = 2, Name = "Undurraga" },
-            new BrandResult { Id = 3, Name = "Casillero del Diablo" }
+            new() { Id = 1, Name = "Concha y Toro" },
+            new() { Id = 2, Name = "Undurraga" },
+            new() { Id = 3, Name = "Casillero del Diablo" }
         };
         var serviceResponse = new ServiceResponse<IEnumerable<BrandResult>>
         {

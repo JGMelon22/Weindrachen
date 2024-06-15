@@ -70,6 +70,7 @@ public class WinesController : ControllerBase
             ? Ok(allWinesInfo)
             : NotFound(allWinesInfo);
     }
+
     [HttpPatch("{id}")]
     public async Task<IActionResult> UpdateWineAsync(int id, WineInput updatedWine)
     {

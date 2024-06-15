@@ -25,13 +25,12 @@ public class WineRepositoryTests
 
         _repository = new WineRepository(_dbContext);
 
-        Random random = new Random();
-        int item = random.Next(19, 9999);
-        decimal randomDecimal = Convert.ToDecimal(item);
+        var random = new Random();
+        var item = random.Next(19, 9999);
+        var randomDecimal = Convert.ToDecimal(item);
 
         if (_dbContext.Grapes.Count() == 0)
-        {
-            for (int i = 0; i < 10; i++)
+            for (var i = 0; i < 10; i++)
             {
                 _dbContext.Wines.Add(new Wine
                 {
@@ -46,7 +45,6 @@ public class WineRepositoryTests
 
                 _dbContext.SaveChanges();
             }
-        }
     }
 
     [Fact]
@@ -84,7 +82,7 @@ public class WineRepositoryTests
     [Fact]
     public void WineRepository_GetWineById_ReturnsWine()
     {
-        int id = 1;
+        var id = 1;
         var result = _repository.GetWineByIdAsync(id);
 
         result.Should().NotBeNull();
@@ -94,7 +92,7 @@ public class WineRepositoryTests
     [Fact]
     public void WineRepository_UpdateWine_ReturnsWine()
     {
-        int id = 3;
+        var id = 3;
         var updatedWine = new WineInput(
             "Casillero del Diablo",
             35.00M,
@@ -118,7 +116,7 @@ public class WineRepositoryTests
     [Fact]
     public void WineRepository_RemoveWine_ReturnsSuccess()
     {
-        int id = 1;
+        var id = 1;
         var result = _repository.RemoveWineAsync(id);
 
         result.Should().NotBeNull();

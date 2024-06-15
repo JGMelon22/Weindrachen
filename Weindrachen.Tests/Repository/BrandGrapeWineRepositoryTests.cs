@@ -26,38 +26,33 @@ public class BrandGrapeWineRepositoryTests
 
         if (_dbContext.Brands.Count() == 0)
         {
-            for (int i = 0; i < 10; i++)
-            {
+            for (var i = 0; i < 10; i++)
                 _dbContext.Brands.Add(new Brand
                 {
                     Name = "New Fake Brand",
                     Country = Country.Argentina
                 });
-            }
 
             _dbContext.SaveChanges();
         }
 
         if (_dbContext.Grapes.Count() == 0)
         {
-            for (int i = 0; i < 10; i++)
-            {
+            for (var i = 0; i < 10; i++)
                 _dbContext.Grapes.Add(new Grape
                 {
                     Name = "New Fake Grape"
                 });
-            }
 
             _dbContext.SaveChanges();
         }
 
-        Random random = new Random();
-        int item = random.Next(19, 9999);
-        decimal randomDecimal = Convert.ToDecimal(item);
+        var random = new Random();
+        var item = random.Next(19, 9999);
+        var randomDecimal = Convert.ToDecimal(item);
 
         if (_dbContext.Grapes.Count() == 0)
-        {
-            for (int i = 0; i < 10; i++)
+            for (var i = 0; i < 10; i++)
             {
                 _dbContext.Wines.Add(new Wine
                 {
@@ -72,7 +67,6 @@ public class BrandGrapeWineRepositoryTests
 
                 _dbContext.SaveChanges();
             }
-        }
     }
 
     [Fact]
@@ -87,7 +81,7 @@ public class BrandGrapeWineRepositoryTests
     [Fact]
     public void BrandGrapeWineRepository_GetWinesInformationByIdAsync_ReturnsWineInfo()
     {
-        int id = 1;
+        var id = 1;
 
         var result = _repository.GetWineInformationByIdAsync(id);
 

@@ -5,7 +5,6 @@ using Weindrachen.Infrastructure.Data;
 using Weindrachen.Infrastructure.Repositories;
 using Weindrachen.Models;
 using Weindrachen.Models.Enums;
-using Xunit;
 
 namespace Weindrachen.Tests.Repository;
 
@@ -27,14 +26,12 @@ public class BrandRepositoryTests
 
         if (_dbContext.Brands.Count() == 0)
         {
-            for (int i = 0; i < 10; i++)
-            {
+            for (var i = 0; i < 10; i++)
                 _dbContext.Brands.Add(new Brand
                 {
                     Name = "New Fake Brand",
                     Country = Country.Argentina
                 });
-            }
 
             _dbContext.SaveChanges();
         }
@@ -61,7 +58,7 @@ public class BrandRepositoryTests
     [Fact]
     public void BrandRepository_GetBrandById_ReturnsBrand()
     {
-        int id = 1;
+        var id = 1;
 
         var result = _repository.GetBrandByIdAsync(id);
 
@@ -72,7 +69,7 @@ public class BrandRepositoryTests
     [Fact]
     public void BrandRepository_UpdateBrand_ReturnsBrands()
     {
-        int id = 4;
+        var id = 4;
         var updatedBrand = new BrandInput("Catena Zapata", Country.Argentina);
 
         var result = _repository.UpdateBrandAsync(id, updatedBrand);
@@ -84,7 +81,7 @@ public class BrandRepositoryTests
     [Fact]
     public void BrandRepository_RemoveBrand_ReturnsSuccess()
     {
-        int id = 3;
+        var id = 3;
 
         var result = _repository.RemoveBrandAsync(id);
 
