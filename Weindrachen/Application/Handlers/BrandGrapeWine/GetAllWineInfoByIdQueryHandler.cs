@@ -6,7 +6,8 @@ using Weindrachen.Models;
 
 namespace Weindrachen.Application.Handlers.BrandGrapeWine;
 
-public class GetAllWineInfoByIdQueryHandler : IRequestHandler<GetAllWineInfoByIdQuery, ServiceResponse<BrandGrapeWineResult>>
+public class
+    GetAllWineInfoByIdQueryHandler : IRequestHandler<GetAllWineInfoByIdQuery, ServiceResponse<BrandGrapeWineResult>>
 {
     private readonly IBrandGrapeWineRepository _brandGrapeWineRepository;
 
@@ -15,7 +16,8 @@ public class GetAllWineInfoByIdQueryHandler : IRequestHandler<GetAllWineInfoById
         _brandGrapeWineRepository = brandGrapeWineRepository;
     }
 
-    public async Task<ServiceResponse<BrandGrapeWineResult>> Handle(GetAllWineInfoByIdQuery request, CancellationToken cancellationToken)
+    public async Task<ServiceResponse<BrandGrapeWineResult>> Handle(GetAllWineInfoByIdQuery request,
+        CancellationToken cancellationToken)
     {
         return await _brandGrapeWineRepository.GetWineInformationByIdAsync(request.id);
     }
