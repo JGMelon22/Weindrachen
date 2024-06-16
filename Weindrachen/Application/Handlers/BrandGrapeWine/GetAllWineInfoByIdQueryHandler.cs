@@ -7,11 +7,11 @@ using Weindrachen.Models;
 namespace Weindrachen.Application.Handlers.BrandGrapeWine;
 
 public class
-    GetAllWineInfoByIdQueryHandler : IRequestHandler<GetAllWineInfoByIdQuery, ServiceResponse<BrandGrapeWineResult>>
+    GetAllWineInfoByIdHandler : IRequestHandler<GetAllWineInfoByIdQuery, ServiceResponse<BrandGrapeWineResult>>
 {
     private readonly IBrandGrapeWineRepository _brandGrapeWineRepository;
 
-    public GetAllWineInfoByIdQueryHandler(IBrandGrapeWineRepository brandGrapeWineRepository)
+    public GetAllWineInfoByIdHandler(IBrandGrapeWineRepository brandGrapeWineRepository)
     {
         _brandGrapeWineRepository = brandGrapeWineRepository;
     }

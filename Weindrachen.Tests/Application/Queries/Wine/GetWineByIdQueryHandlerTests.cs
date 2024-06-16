@@ -22,7 +22,7 @@ public class GetWineByIdQueryHandlerTests
     public async Task GetBrandByIdQueryHandler_Handle_ReturnsWine()
     {
         // Arrange
-        var wineId = 1;
+        int wineId = 1;
         var handler = new GetWineByIdHandler(_wineRepository);
         var wineResult = new WineResult
         {

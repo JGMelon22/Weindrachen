@@ -19,10 +19,10 @@ public class GetBrandByIdQueryHandlerTests
     }
 
     [Fact]
-    public async Task GetBrandByIdQueryHandler_Handle_ReturnsBrandResult()
+    public async Task GetBrandByIdQueryHandler_Handle_ReturnsBrandsResult()
     {
         // Arrange
-        var brandId = 1;
+        int brandId = 1;
         var handler = new GetBrandByIdHandler(_brandRepository);
         var brandResult = new BrandResult
         {
