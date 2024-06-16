@@ -8,11 +8,11 @@ using Weindrachen.Models;
 
 namespace Weindrachen.Tests.Application.Queries.Grape;
 
-public class GetGrapesQueryHandler
+public class GetGrapesQueryHandlerTests
 {
     private readonly IGrapeRepository _grapeRepository;
 
-    public GetGrapesQueryHandler()
+    public GetGrapesQueryHandlerTests()
     {
         _grapeRepository = A.Fake<IGrapeRepository>();
     }

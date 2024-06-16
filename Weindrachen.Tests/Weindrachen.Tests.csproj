@@ -39,4 +39,8 @@
         </Reference>
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Application\Queries\BrandGrapeWine\" />
+    </ItemGroup>
+
 </Project>

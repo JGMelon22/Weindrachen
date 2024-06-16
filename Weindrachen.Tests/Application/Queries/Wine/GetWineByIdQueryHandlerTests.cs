@@ -9,11 +9,11 @@ using Weindrachen.Models.Enums;
 
 namespace Weindrachen.Tests.Application.Queries.Wine;
 
-public class GetWineByIdQueryHandler
+public class GetWineByIdQueryHandlerTests
 {
     private readonly IWineRepository _wineRepository;
 
-    public GetWineByIdQueryHandler()
+    public GetWineByIdQueryHandlerTests()
     {
         _wineRepository = A.Fake<IWineRepository>();
     }

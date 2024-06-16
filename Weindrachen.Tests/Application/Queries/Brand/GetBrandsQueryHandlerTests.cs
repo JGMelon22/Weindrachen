@@ -8,11 +8,11 @@ using Weindrachen.Models;
 
 namespace Weindrachen.Tests.Application.Queries.Brand;
 
-public class GetBrandsQueryHandler
+public class GetBrandsQueryHandlerTests
 {
     private readonly IBrandRepository _brandRepository;
 
-    public GetBrandsQueryHandler()
+    public GetBrandsQueryHandlerTests()
     {
         _brandRepository = A.Fake<IBrandRepository>();
     }

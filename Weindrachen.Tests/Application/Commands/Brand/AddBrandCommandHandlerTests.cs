@@ -9,11 +9,11 @@ using Weindrachen.Models.Enums;
 
 namespace Weindrachen.Tests.Application.Commands.Brand;
 
-public class AddBrandCommandHandler
+public class AddBrandCommandHandlerTests
 {
     private readonly IBrandRepository _brandRepository;
 
-    public AddBrandCommandHandler()
+    public AddBrandCommandHandlerTests()
     {
         _brandRepository = A.Fake<IBrandRepository>();
     }

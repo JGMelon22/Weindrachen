@@ -10,11 +10,11 @@ using Weindrachen.Models.Enums;
 
 namespace Weindrachen.Tests.Application.Commands.Wine;
 
-public class AddWineCommandHandler
+public class AddWineCommandHandlerTests
 {
     private readonly IWineRepository _wineRepository;
 
-    public AddWineCommandHandler()
+    public AddWineCommandHandlerTests()
     {
         _wineRepository = A.Fake<IWineRepository>();
     }
