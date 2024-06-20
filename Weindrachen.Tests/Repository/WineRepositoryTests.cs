@@ -25,17 +25,13 @@ public class WineRepositoryTests
 
         _repository = new WineRepository(_dbContext);
 
-        var random = new Random();
-        var item = random.Next(19, 9999);
-        var randomDecimal = Convert.ToDecimal(item);
-
         if (_dbContext.Grapes.Count() == 0)
             for (var i = 0; i < 10; i++)
             {
                 _dbContext.Wines.Add(new Wine
                 {
                     Name = $"New Fake Wine - {i}#",
-                    Price = randomDecimal,
+                    Price = 25.00M,
                     IsDoc = true,
                     AlcoholicLevel = 14.0F,
                     Country = Country.Brazil,
@@ -48,8 +44,9 @@ public class WineRepositoryTests
     }
 
     [Fact]
-    public void WineRepository_AddWine_ReturnsWine()
+    public async Task WineRepository_AddWine_ReturnsWine()
     {
+        // Arrange
         var wineInput = new WineInput(
             "Passo Los Vales",
             29.00M,
@@ -63,36 +60,67 @@ public class WineRepositoryTests
             },
             Taste.Plum
         );
+        var wineResult = new WineResult
+        {
+            Id = 11,
+            Name = $"Passo Los Vales",
+            Price = 29.00M,
+            IsDoc = true,
+            AlcoholicLevel = 13.0F,
+            Country = Country.Chile,
+            Taste = Taste.Plum
+        };
 
-        var result = _repository.AddNewWineAsync(wineInput);
-
+        // Act
+        var result = await _repository.AddNewWineAsync(wineInput);
+        
+        // Assert
         result.Should().NotBeNull();
-        result.Should().BeOfType<Task<ServiceResponse<WineResult>>>();
+        result.Should().BeOfType<ServiceResponse<WineResult>>();
     }
 
     [Fact]
-    public void WineRepository_GetAllWines_ReturnsWines()
+    public async Task WineRepository_GetAllWines_ReturnsWines()
     {
-        var result = _repository.GetAllWinesAsync();
+        // Act
+        var result = await _repository.GetAllWinesAsync();
 
+        // Assert
         result.Should().NotBeNull();
-        result.Should().BeOfType<Task<ServiceResponse<IEnumerable<WineResult>>>>();
+        result.Data!.Count().Should().Be(10);
+        result.Should().BeOfType<ServiceResponse<IEnumerable<WineResult>>>();
     }
 
     [Fact]
-    public void WineRepository_GetWineById_ReturnsWine()
+    public async Task WineRepository_GetWineById_ReturnsWine()
     {
-        var id = 1;
-        var result = _repository.GetWineByIdAsync(id);
+        // Arrange
+        int id = 1;
+        var wineResult = new WineResult
+        {
+            Id = id,
+            Name = $"New Fake Wine - 0#",
+            Price = 25.00M,
+            IsDoc = true,
+            AlcoholicLevel = 14.0F,
+            Country = Country.Brazil,
+            Taste = Taste.Blackberry
+        };
+        
+        // Act
+        var result = await _repository.GetWineByIdAsync(id);
 
+        // Assert
         result.Should().NotBeNull();
-        result.Should().BeOfType<Task<ServiceResponse<WineResult>>>();
+        result.Data.Should().BeEquivalentTo(wineResult);
+        result.Should().BeOfType<ServiceResponse<WineResult>>();
     }
 
     [Fact]
-    public void WineRepository_UpdateWine_ReturnsWine()
+    public async Task WineRepository_UpdateWine_ReturnsWine()
     {
-        var id = 3;
+        // Arrange
+        int id = 3;
         var updatedWine = new WineInput(
             "Casillero del Diablo",
             35.00M,
@@ -106,20 +134,38 @@ public class WineRepositoryTests
             },
             Taste.Cherry
         );
-
-        var result = _repository.UpdateWineAsync(id, updatedWine);
-
+        var wineResult = new WineResult
+        {
+            Id = id,
+            Name = "Casillero del Diablo",
+            Price = 35.00M,
+            IsDoc = true,
+            AlcoholicLevel = 15.0F,
+            Country = Country.Chile,
+            Taste = Taste.Cherry
+        };
+        
+        // Act
+        var result = await _repository.UpdateWineAsync(id, updatedWine);
+    
+        // Assert
         result.Should().NotBeNull();
-        result.Should().BeOfType<Task<ServiceResponse<WineResult>>>();
+        result.Data.Should().BeEquivalentTo(wineResult);
+        result.Should().BeOfType<ServiceResponse<WineResult>>();
     }
 
     [Fact]
-    public void WineRepository_RemoveWine_ReturnsSuccess()
+    public async Task WineRepository_RemoveWine_ReturnsSuccess()
     {
-        var id = 1;
-        var result = _repository.RemoveWineAsync(id);
+        // Arrange
+        int id = 1;
 
+        // Act
+        var result = await _repository.RemoveWineAsync(id);
+
+        // Assert
         result.Should().NotBeNull();
-        result.Should().BeOfType<Task<ServiceResponse<bool>>>();
+        result.Success.Should().BeTrue();
+        result.Should().BeOfType<ServiceResponse<bool>>();
     }
 }
