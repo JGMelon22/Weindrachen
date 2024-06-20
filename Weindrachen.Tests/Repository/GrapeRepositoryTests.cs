@@ -1,5 +1,7 @@
+using FakeItEasy;
 using FluentAssertions;
 using Microsoft.EntityFrameworkCore;
+using Namotion.Reflection;
 using Weindrachen.DTOs.Grape;
 using Weindrachen.Infrastructure.Data;
 using Weindrachen.Infrastructure.Repositories;
@@ -36,54 +38,90 @@ public class GrapeRepositoryTests
     }
 
     [Fact]
-    public void GrapeRepository_AddGrape_ReturnsGrape()
+    public async Task GrapeRepository_AddGrape_ReturnsGrape()
     {
-        var grapeInput = new GrapeInput("Malbec");
-        var result = _repository.AddNewGrapeAsync(grapeInput);
+        // Arrange
+        var newGrape = new GrapeInput("Malbec");
+        var grapeResult = new GrapeResult()
+        {
+            Id = 11,
+            Name = "Malbec"
+        };
 
+        // Act
+        var result = await _repository.AddNewGrapeAsync(newGrape);
+
+        // Assert
         result.Should().NotBeNull();
+        result.Data.Should().BeEquivalentTo(grapeResult);
+        result.Should().BeOfType<ServiceResponse<GrapeResult>>();
     }
 
     [Fact]
-    public void GrapeRepository_GetAllGrapes_ReturnsGrapes()
+    public async Task GrapeRepository_GetAllGrapes_ReturnsGrapes()
     {
-        var result = _repository.GetAllGrapesAsync();
+        // Act
+        var result = await _repository.GetAllGrapesAsync();
 
+        // Assert
         result.Should().NotBeNull();
-        result.Should().BeOfType<Task<ServiceResponse<IEnumerable<GrapeResult>>>>();
+        result.Data!.Count().Should().Be(10);
+        result.Should().BeOfType<ServiceResponse<IEnumerable<GrapeResult>>>();
     }
 
     [Fact]
-    public void GrapeRepository_GetGrapeById_ReturnsGrape()
+    public async Task GrapeRepository_GetGrapeById_ReturnsGrape()
     {
-        var id = 1;
+        // Arrange
+        int id = 1;
+        var grapeResult = new GrapeResult
+        {
+            Id = 1,
+            Name = "New Fake Grape"
+        };
 
-        var result = _repository.GetGrapeByIdAsync(id);
+        // Act
+        var result = await _repository.GetGrapeByIdAsync(id);
 
+        // Assert
         result.Should().NotBeNull();
-        result.Should().BeOfType<Task<ServiceResponse<GrapeResult>>>();
+        result.Data.Should().BeEquivalentTo(grapeResult);
+        result.Should().BeOfType<ServiceResponse<GrapeResult>>();
     }
 
     [Fact]
-    public void GrapeRepository_UpdateGrape_ReturnsGrapes()
+    public async Task GrapeRepository_UpdateGrape_ReturnsGrapes()
     {
-        var id = 4;
+        // Arrange
+        int id = 4;
         var updatedGrape = new GrapeInput("Cabernet Sauvignon");
+        var grapeResult = new GrapeResult
+        {
+            Id = 4,
+            Name = "Cabernet Sauvignon"
+        };
 
-        var result = _repository.UpdateGrapeAsync(id, updatedGrape);
+        // Act
+        var result = await _repository.UpdateGrapeAsync(id, updatedGrape);
 
+        // Assert
         result.Should().NotBeNull();
-        result.Should().BeOfType<Task<ServiceResponse<GrapeResult>>>();
+        result.Data.Should().BeEquivalentTo(grapeResult);
+        result.Should().BeOfType<ServiceResponse<GrapeResult>>();
     }
 
     [Fact]
-    public void GrapeRepository_RemoveGrape_ReturnsSuccess()
+    public async Task GrapeRepository_RemoveGrape_ReturnsSuccess()
     {
-        var id = 3;
+        // Arrange
+        int id = 1;
 
-        var result = _repository.RemoveGrapeAsync(id);
+        // Act
+        var result = await _repository.RemoveGrapeAsync(id);
 
+        // Assert
         result.Should().NotBeNull();
-        result.Should().BeOfType<Task<ServiceResponse<bool>>>();
+        result.Success.Should().Be(true);
+        result.Should().BeOfType<ServiceResponse<bool>>();
     }
 }
