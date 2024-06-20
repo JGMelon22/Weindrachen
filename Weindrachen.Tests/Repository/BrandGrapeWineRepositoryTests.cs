@@ -24,40 +24,36 @@ public class BrandGrapeWineRepositoryTests
 
         _repository = new BrandGrapeWineRepository(_dbContext);
 
+        if (_dbContext.Grapes.Count() == 0)
+        {
+            for (var i = 0; i < 10; i++)
+                _dbContext.Grapes.Add(new Grape
+                {
+                    Name = $"New Fake Grape - {i}#"
+                });
+
+            _dbContext.SaveChanges();
+        }
+
         if (_dbContext.Brands.Count() == 0)
         {
             for (var i = 0; i < 10; i++)
                 _dbContext.Brands.Add(new Brand
                 {
-                    Name = "New Fake Brand",
+                    Name = $"New Fake Brand - {i}#",
                     Country = Country.Argentina
                 });
 
             _dbContext.SaveChanges();
         }
 
-        if (_dbContext.Grapes.Count() == 0)
+        if (_dbContext.Wines.Count() == 0)
         {
             for (var i = 0; i < 10; i++)
-                _dbContext.Grapes.Add(new Grape
-                {
-                    Name = "New Fake Grape"
-                });
-
-            _dbContext.SaveChanges();
-        }
-
-        var random = new Random();
-        var item = random.Next(19, 9999);
-        var randomDecimal = Convert.ToDecimal(item);
-
-        if (_dbContext.Grapes.Count() == 0)
-            for (var i = 0; i < 10; i++)
-            {
                 _dbContext.Wines.Add(new Wine
                 {
                     Name = $"New Fake Wine - {i}#",
-                    Price = randomDecimal,
+                    Price = 25.00M,
                     IsDoc = true,
                     AlcoholicLevel = 14.0F,
                     Country = Country.Brazil,
@@ -65,27 +61,44 @@ public class BrandGrapeWineRepositoryTests
                     Taste = Taste.Blackberry
                 });
 
-                _dbContext.SaveChanges();
-            }
+            _dbContext.SaveChanges();
+        }
     }
 
     [Fact]
-    public void BrandGrapeWineRepository_GetAllWinesInformationAsync_ReturnsAllWinesInfo()
+    public async Task BrandGrapeWineRepository_GetAllWinesInformationAsync_ReturnsAllWinesInfo()
     {
-        var result = _repository.GetAllWinesInformationAsync();
+        // Act
+        var result = await _repository.GetAllWinesInformationAsync();
 
+        // Assert
         result.Should().NotBeNull();
-        result.Should().BeOfType<Task<ServiceResponse<IEnumerable<BrandGrapeWineResult>>>>();
+        result.Data!.Count().Should().Be(10);
+        result.Should().BeOfType<ServiceResponse<IEnumerable<BrandGrapeWineResult>>>();
     }
 
     [Fact]
-    public void BrandGrapeWineRepository_GetWinesInformationByIdAsync_ReturnsWineInfo()
+    public async Task BrandGrapeWineRepository_GetWinesInformationByIdAsync_ReturnsWineInfo()
     {
+        // Arrange
         var id = 1;
+        var brandGrapeWineResult = new BrandGrapeWineResult
+        {
+            WineId = 1,
+            WineName = "New Fake Wine - 0#",
+            IsDoc = true,
+            AlcoholicLevel = 14.0F,
+            BrandName = "New Fake Brand - 0#",
+            Country = Country.Brazil,
+            Taste = Taste.Blackberry
+        };
 
-        var result = _repository.GetWineInformationByIdAsync(id);
+        // Act
+        var result = await _repository.GetWineInformationByIdAsync(id);
 
+        // Assert
         result.Should().NotBeNull();
-        result.Should().BeOfType<Task<ServiceResponse<BrandGrapeWineResult>>>();
+        result.Data.Should().BeEquivalentTo(brandGrapeWineResult);
+        result.Should().BeOfType<ServiceResponse<BrandGrapeWineResult>>();
     }
 }

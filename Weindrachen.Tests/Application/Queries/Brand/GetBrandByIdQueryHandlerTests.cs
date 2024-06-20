@@ -22,7 +22,7 @@ public class GetBrandByIdQueryHandlerTests
     public async Task GetBrandByIdQueryHandler_Handle_ReturnsBrandsResult()
     {
         // Arrange
-        int brandId = 1;
+        var brandId = 1;
         var handler = new GetBrandByIdHandler(_brandRepository);
         var brandResult = new BrandResult
         {

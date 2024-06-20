@@ -21,21 +21,22 @@ public class BrandGrapeWineRepository : IBrandGrapeWineRepository
         try
         {
             var brandGrapeWines = await (from g in _dbContext.Grapes
-                join gw in _dbContext.GrapesWines on g.Id equals gw.GrapeId
-                join w in _dbContext.Wines on gw.WineId equals w.Id
-                join b in _dbContext.Brands on w.BrandId equals b.Id
-                select new BrandGrapeWineResult
-                {
-                    WineId = w.Id,
-                    WineName = w.Name,
-                    Price = w.Price,
-                    IsDoc = w.IsDoc,
-                    Country = w.Country,
-                    AlcoholicLevel = w.AlcoholicLevel,
-                    Taste = w.Taste,
-                    BrandName = b.Name,
-                    GrapeName = g.Name
-                }).ToListAsync();
+                                      join gw in _dbContext.GrapesWines on g.Id equals gw.GrapeId
+                                      join w in _dbContext.Wines on gw.WineId equals w.Id
+                                      join b in _dbContext.Brands on w.BrandId equals b.Id
+                                      select new BrandGrapeWineResult
+                                      {
+                                          WineId = w.Id,
+                                          WineName = w.Name,
+                                          Price = w.Price,
+                                          IsDoc = w.IsDoc,
+                                          Country = w.Country,
+                                          AlcoholicLevel = w.AlcoholicLevel,
+                                          Taste = w.Taste,
+                                          BrandName = b.Name,
+                                          GrapeName = g.Name
+                                      }).ToListAsync()
+                                  ?? throw new Exception("Brand list is empty!");
 
             serviceResponse.Data = brandGrapeWines;
         }

@@ -21,7 +21,7 @@ public class GetGrapeByIdQueryHandlerTests
     public async Task GetGrapeByIdQueryHandler_Handle_ReturnsGrape()
     {
         // Arrange 
-        int grapeId = 1;
+        var grapeId = 1;
         var handler = new GetGrapeByIdHandler(_grapeRepository);
         var grapeResult = new GrapeResult
         {

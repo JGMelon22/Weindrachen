@@ -1,7 +1,5 @@
-using FakeItEasy;
 using FluentAssertions;
 using Microsoft.EntityFrameworkCore;
-using Namotion.Reflection;
 using Weindrachen.DTOs.Grape;
 using Weindrachen.Infrastructure.Data;
 using Weindrachen.Infrastructure.Repositories;
@@ -42,7 +40,7 @@ public class GrapeRepositoryTests
     {
         // Arrange
         var newGrape = new GrapeInput("Malbec");
-        var grapeResult = new GrapeResult()
+        var grapeResult = new GrapeResult
         {
             Id = 11,
             Name = "Malbec"
@@ -73,7 +71,7 @@ public class GrapeRepositoryTests
     public async Task GrapeRepository_GetGrapeById_ReturnsGrape()
     {
         // Arrange
-        int id = 1;
+        var id = 1;
         var grapeResult = new GrapeResult
         {
             Id = 1,
@@ -93,7 +91,7 @@ public class GrapeRepositoryTests
     public async Task GrapeRepository_UpdateGrape_ReturnsGrapes()
     {
         // Arrange
-        int id = 4;
+        var id = 4;
         var updatedGrape = new GrapeInput("Cabernet Sauvignon");
         var grapeResult = new GrapeResult
         {
@@ -114,7 +112,7 @@ public class GrapeRepositoryTests
     public async Task GrapeRepository_RemoveGrape_ReturnsSuccess()
     {
         // Arrange
-        int id = 1;
+        var id = 1;
 
         // Act
         var result = await _repository.RemoveGrapeAsync(id);

@@ -1,8 +1,6 @@
 using FluentAssertions;
 using Microsoft.EntityFrameworkCore;
-using Namotion.Reflection;
 using Weindrachen.DTOs.Brand;
-using Weindrachen.DTOs.Grape;
 using Weindrachen.Infrastructure.Data;
 using Weindrachen.Infrastructure.Repositories;
 using Weindrachen.Models;
@@ -50,10 +48,10 @@ public class BrandRepositoryTests
             Name = "Concha y Toro",
             Country = Country.Chile
         };
-        
+
         // Act
         var result = await _repository.AddNewBrandAsync(newBrand);
-        
+
         // Assert
         result.Should().NotBeNull();
         result.Data.Should().BeEquivalentTo(brandResult);
@@ -76,17 +74,17 @@ public class BrandRepositoryTests
     public async Task BrandRepository_GetBrandById_ReturnsBrand()
     {
         // Arrange
-        int id = 1;
+        var id = 1;
         var brandResult = new BrandResult
         {
             Id = 1,
             Name = "New Fake Brand",
             Country = Country.Argentina
         };
-        
+
         // Act
         var result = await _repository.GetBrandByIdAsync(id);
-        
+
         // Assert
         result.Should().NotBeNull();
         result.Data.Should().BeEquivalentTo(brandResult);
@@ -97,7 +95,7 @@ public class BrandRepositoryTests
     public async Task BrandRepository_UpdateBrand_ReturnsBrands()
     {
         // Arrange
-        int id = 4;
+        var id = 4;
         var updatedBrand = new BrandInput("Catena Zapata", Country.Argentina);
         var brandResult = new BrandResult
         {
@@ -119,7 +117,7 @@ public class BrandRepositoryTests
     public async Task BrandRepository_RemoveBrand_ReturnsSuccess()
     {
         // Arrange
-        int id = 3;
+        var id = 3;
 
         // Act 
         var result = await _repository.RemoveBrandAsync(id);

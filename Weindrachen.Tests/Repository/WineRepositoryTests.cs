@@ -63,7 +63,7 @@ public class WineRepositoryTests
         var wineResult = new WineResult
         {
             Id = 11,
-            Name = $"Passo Los Vales",
+            Name = "Passo Los Vales",
             Price = 29.00M,
             IsDoc = true,
             AlcoholicLevel = 13.0F,
@@ -73,7 +73,7 @@ public class WineRepositoryTests
 
         // Act
         var result = await _repository.AddNewWineAsync(wineInput);
-        
+
         // Assert
         result.Should().NotBeNull();
         result.Should().BeOfType<ServiceResponse<WineResult>>();
@@ -95,18 +95,18 @@ public class WineRepositoryTests
     public async Task WineRepository_GetWineById_ReturnsWine()
     {
         // Arrange
-        int id = 1;
+        var id = 1;
         var wineResult = new WineResult
         {
             Id = id,
-            Name = $"New Fake Wine - 0#",
+            Name = "New Fake Wine - 0#",
             Price = 25.00M,
             IsDoc = true,
             AlcoholicLevel = 14.0F,
             Country = Country.Brazil,
             Taste = Taste.Blackberry
         };
-        
+
         // Act
         var result = await _repository.GetWineByIdAsync(id);
 
@@ -120,7 +120,7 @@ public class WineRepositoryTests
     public async Task WineRepository_UpdateWine_ReturnsWine()
     {
         // Arrange
-        int id = 3;
+        var id = 3;
         var updatedWine = new WineInput(
             "Casillero del Diablo",
             35.00M,
@@ -144,10 +144,10 @@ public class WineRepositoryTests
             Country = Country.Chile,
             Taste = Taste.Cherry
         };
-        
+
         // Act
         var result = await _repository.UpdateWineAsync(id, updatedWine);
-    
+
         // Assert
         result.Should().NotBeNull();
         result.Data.Should().BeEquivalentTo(wineResult);
@@ -158,7 +158,7 @@ public class WineRepositoryTests
     public async Task WineRepository_RemoveWine_ReturnsSuccess()
     {
         // Arrange
-        int id = 1;
+        var id = 1;
 
         // Act
         var result = await _repository.RemoveWineAsync(id);
