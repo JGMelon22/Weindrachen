@@ -63,6 +63,23 @@ public class BrandGrapeWineRepositoryTests
 
             _dbContext.SaveChanges();
         }
+
+        if (_dbContext.GrapesWines.Count() == 0)
+        {
+            var grapes = _dbContext.Grapes.ToList();
+            var wines = _dbContext.Wines.ToList();
+
+            for (var i = 0; i < 10; i++)
+            {
+                _dbContext.GrapesWines.Add(new GrapeWine
+                {
+                    GrapeId = grapes[i].Id,
+                    WineId = wines[i].Id
+                });
+            }
+
+            _dbContext.SaveChanges();
+        }
     }
 
     [Fact]
@@ -84,13 +101,15 @@ public class BrandGrapeWineRepositoryTests
         var id = 1;
         var brandGrapeWineResult = new BrandGrapeWineResult
         {
-            WineId = 1,
+            WineId = id,
             WineName = "New Fake Wine - 0#",
+            Price = 25.00M,
             IsDoc = true,
             AlcoholicLevel = 14.0F,
-            BrandName = "New Fake Brand - 0#",
             Country = Country.Brazil,
-            Taste = Taste.Blackberry
+            Taste = Taste.Blackberry,
+            BrandName = "New Fake Brand - 0#",
+            GrapeName = "New Fake Grape - 9#"
         };
 
         // Act
