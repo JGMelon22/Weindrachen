@@ -1,4 +1,3 @@
-using System.Collections;
 using FakeItEasy;
 using FluentAssertions;
 using FluentValidation;
@@ -57,6 +56,7 @@ public class BrandsControllerTests
         result.Should().NotBeNull();
         Assert.IsType<OkObjectResult>(result);
         serviceResponse.Data.Should().Be(brandResult);
+        result.Should().BeOfType<OkObjectResult>();
     }
 
     [Fact]
@@ -82,6 +82,8 @@ public class BrandsControllerTests
 
         // Assert
         result.Should().NotBeNull();
+        Assert.IsType<OkObjectResult>(result);
+        serviceResponse.Data.Count().Should().Be(3);
         result.Should().BeOfType<OkObjectResult>();
     }
 
@@ -109,6 +111,8 @@ public class BrandsControllerTests
 
         // Assert
         result.Should().NotBeNull();
+        Assert.IsType<OkObjectResult>(result);
+        serviceResponse.Data.Should().Be(brandResult);
         result.Should().BeOfType<OkObjectResult>();
     }
 
@@ -141,6 +145,7 @@ public class BrandsControllerTests
         result.Should().NotBeNull();
         Assert.IsType<OkObjectResult>(result);
         serviceResponse.Data.Should().Be(brandResult);
+        result.Should().BeOfType<OkObjectResult>();
     }
 
     [Fact]
