@@ -70,13 +70,11 @@ public class BrandGrapeWineRepositoryTests
             var wines = _dbContext.Wines.ToList();
 
             for (var i = 0; i < 10; i++)
-            {
                 _dbContext.GrapesWines.Add(new GrapeWine
                 {
                     GrapeId = grapes[i].Id,
                     WineId = wines[i].Id
                 });
-            }
 
             _dbContext.SaveChanges();
         }

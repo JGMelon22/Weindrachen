@@ -35,7 +35,7 @@ public class GrapesController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<IActionResult> GetAlGrapesAsync()
+    public async Task<IActionResult> GetAllGrapesAsync()
     {
         var grapes = await _mediator.Send(new GetGrapesQuery());
         return grapes.Data != null

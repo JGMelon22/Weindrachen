@@ -15,9 +15,9 @@ namespace Weindrachen.Tests.Controllers;
 
 public class BrandsControllerTests
 {
+    private readonly BrandsController _controller;
     private readonly IMediator _mediator;
     private readonly IValidator<BrandInput> _validator;
-    private readonly BrandsController _controller;
 
     public BrandsControllerTests()
     {
@@ -63,16 +63,16 @@ public class BrandsControllerTests
     public async Task BrandsController_GetAllBrandsAsync_ReturnsBrands()
     {
         // Arrange
-        var brandResult = new List<BrandResult>
+        var brandsResult = new List<BrandResult>
         {
-            new() { Name = "Concha y Toro", Country = Country.Chile },
-            new() { Name = "Generic Argentina Wine", Country = Country.Argentina },
-            new() { Name = "Generic Brazilian Wine", Country = Country.Brazil }
+            new() { Id = 1, Name = "Concha y Toro", Country = Country.Chile },
+            new() { Id = 2, Name = "Generic Argentina Wine", Country = Country.Argentina },
+            new() { Id = 3, Name = "Generic Brazilian Wine", Country = Country.Brazil }
         };
 
         var serviceResponse = new ServiceResponse<IEnumerable<BrandResult>>
         {
-            Data = brandResult
+            Data = brandsResult
         };
 
         A.CallTo(() => _mediator.Send(A<GetBrandsQuery>._, default)).Returns(serviceResponse);
@@ -91,11 +91,12 @@ public class BrandsControllerTests
     public async Task BrandsController_GetBrandByIdAsync_ReturnsBrand()
     {
         // Arrange
-        int id = 1;
-
-        var brandResult = new BrandResult()
+        var id = 1;
+        var brandResult = new BrandResult
         {
-            Name = "Concha y Toro", Country = Country.Chile
+            Id = id,
+            Name = "Concha y Toro",
+            Country = Country.Chile
         };
 
         var serviceResponse = new ServiceResponse<BrandResult>
@@ -120,12 +121,12 @@ public class BrandsControllerTests
     public async Task BrandsController_UpdateBrandAsync_ReturnsBrand()
     {
         // Arrange
-        int id = 1;
+        var id = 1;
         var updatedBrand = new BrandInput("Gato Negro", Country.Uruguay);
         var validationResult = new ValidationResult();
         var brandResult = new BrandResult
         {
-            Id = 1,
+            Id = id,
             Name = "Gato Negro",
             Country = Country.Chile
         };
@@ -135,7 +136,9 @@ public class BrandsControllerTests
         A.CallTo(() => _validator.ValidateAsync(updatedBrand, default))
             .Returns(Task.FromResult(validationResult));
 
-        A.CallTo(() => _mediator.Send(A<UpdateBrandCommand>.That.Matches(x =>x.Id == id && x.UpdatedBrand == updatedBrand), default))
+        A.CallTo(() =>
+                _mediator.Send(A<UpdateBrandCommand>.That.Matches(x => x.Id == id && x.UpdatedBrand == updatedBrand),
+                    default))
             .Returns(Task.FromResult(serviceResponse));
 
         // Act
@@ -152,7 +155,7 @@ public class BrandsControllerTests
     public async Task BrandsController_RemoveBrandAsync_ReturnsSuccess()
     {
         // Arrange
-        int id = 1;
+        var id = 1;
         var serviceResponse = new ServiceResponse<bool>();
 
         A.CallTo(() => _mediator.Send(A<RemoveBrandCommand>.That.Matches(x => x.Id == id), default))
