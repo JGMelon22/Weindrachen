@@ -144,7 +144,7 @@ public class BrandsControllerTests
     }
 
     [Fact]
-    public async Task BrandsController_AddBrandAsync_ReturnsSuccess()
+    public async Task BrandsController_RemoveBrandAsync_ReturnsSuccess()
     {
         // Arrange
         int id = 1;
