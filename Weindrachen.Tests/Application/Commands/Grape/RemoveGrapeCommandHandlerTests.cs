@@ -20,7 +20,7 @@ public class RemoveGrapeCommandHandlerTests
     public async Task RemoveGrapeCommandHandler_Handle_ReturnsSuccess()
     {
         // Arrange
-        int id = 1;
+        var id = 1;
         var handler = new RemoveGrapeHandler(_grapeRepository);
 
         var serviceResponse = new ServiceResponse<bool>();

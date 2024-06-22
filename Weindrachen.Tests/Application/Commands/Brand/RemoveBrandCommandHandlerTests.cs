@@ -2,7 +2,6 @@ using FakeItEasy;
 using FluentAssertions;
 using Weindrachen.Application.Commands.Brand;
 using Weindrachen.Application.Handlers.Brand;
-using Weindrachen.Infrastructure.Repositories;
 using Weindrachen.Interfaces;
 using Weindrachen.Models;
 
@@ -21,7 +20,7 @@ public class RemoveBrandCommandHandlerTests
     public async Task RemoveBrandCommandHandler_Handle_ReturnsSuccess()
     {
         // Arrange
-        int id = 1;
+        var id = 1;
         var handler = new RemoveBrandHandler(_brandRepository);
 
         var serviceResponse = new ServiceResponse<bool>();
