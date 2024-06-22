@@ -119,7 +119,7 @@ public class GrapeRepositoryTests
 
         // Assert
         result.Should().NotBeNull();
-        result.Success.Should().Be(true);
+        result.Success.Should().BeTrue();
         result.Should().BeOfType<ServiceResponse<bool>>();
     }
 }

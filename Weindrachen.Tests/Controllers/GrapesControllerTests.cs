@@ -164,6 +164,6 @@ public class GrapesControllerTests
         result.Should().NotBeNull();
         Assert.IsType<NoContentResult>(result);
         serviceResponse.Success.Should().Be(true);
-        serviceResponse.Should().BeOfType<ServiceResponse<bool>>();
+        serviceResponse.Success.Should().BeTrue();
     }
 }

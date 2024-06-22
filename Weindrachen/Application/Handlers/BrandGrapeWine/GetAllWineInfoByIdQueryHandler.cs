@@ -19,6 +19,6 @@ public class
     public async Task<ServiceResponse<BrandGrapeWineResult>> Handle(GetAllWineInfoByIdQuery request,
         CancellationToken cancellationToken)
     {
-        return await _brandGrapeWineRepository.GetWineInformationByIdAsync(request.id);
+        return await _brandGrapeWineRepository.GetWineInformationByIdAsync(request.Id);
     }
 }
