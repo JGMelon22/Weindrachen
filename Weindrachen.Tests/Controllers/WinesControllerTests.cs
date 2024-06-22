@@ -228,7 +228,7 @@ public class WinesControllerTests
     }
 
     [Fact]
-    public async Task WinesController_XPTO_ReturnsWineAllInfo()
+    public async Task WinesController_GetAllWinesInformationByIdAsync_ReturnsWineAllInfo()
     {
         // Arrange
         var id = 1;
