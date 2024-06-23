@@ -71,11 +71,14 @@ public class WineRepositoryTests
             Taste = Taste.Plum
         };
 
+        // var serviceResponse = new ServiceResponse<WineResult> { Data = wineResult };
+
         // Act
         var result = await _repository.AddNewWineAsync(wineInput);
 
         // Assert
         result.Should().NotBeNull();
+        // serviceResponse.Data.Should().Be(serviceResponse);
         result.Should().BeOfType<ServiceResponse<WineResult>>();
     }
 

@@ -21,5 +21,8 @@ public class AppDbContext : DbContext
         modelBuilder.ApplyConfiguration(new GrapeConfiguration());
         modelBuilder.ApplyConfiguration(new BrandConfiguration());
         modelBuilder.ApplyConfiguration(new GrapeWineConfiguration());
+
+        // Uncomment here if you need to seed new data
+        // InitialSeeding.Seed(modelBuilder);
     }
 }
