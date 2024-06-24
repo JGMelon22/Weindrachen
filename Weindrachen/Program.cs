@@ -1,5 +1,6 @@
 using System.Reflection;
 using FluentValidation;
+using Weindrachen.Configuration;
 using Weindrachen.DTOs.Brand;
 using Weindrachen.DTOs.Grape;
 using Weindrachen.DTOs.Wine;
@@ -23,10 +24,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 # region [Repository Register]
 
-builder.Services.AddScoped<IBrandRepository, BrandRepository>();
-builder.Services.AddScoped<IGrapeRepository, GrapeRepository>();
-builder.Services.AddScoped<IWineRepository, WineRepository>();
-builder.Services.AddScoped<IBrandGrapeWineRepository, BrandGrapeWineRepository>();
+builder.Services.AddRepositories();
 
 # endregion
 
