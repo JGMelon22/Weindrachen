@@ -7,7 +7,12 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddOpenApiDocument();
+builder.Services.AddOpenApiDocument(options => 
+{
+    options.Version = "v1";
+    options.Title = "Weindrachen";
+    options.Description = "Weindrachen, a Web API to manage wines.";
+});
 
 # region [DbContext Registrer]
 
