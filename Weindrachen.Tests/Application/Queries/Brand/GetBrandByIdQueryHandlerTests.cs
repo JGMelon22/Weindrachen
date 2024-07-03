@@ -43,7 +43,7 @@ public class GetBrandByIdQueryHandlerTests
         var result = await handler.Handle(query, CancellationToken.None);
 
         // Assert
-        result.Should().NotBeNull();
+        result.Data.Should().NotBeNull();
         result.Data.Should().BeEquivalentTo(brandResult);
         A.CallTo(() => _brandRepository.GetBrandByIdAsync(brandId))
             .MustHaveHappenedOnceExactly();

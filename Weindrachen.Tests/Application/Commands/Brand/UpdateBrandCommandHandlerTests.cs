@@ -22,7 +22,7 @@ public class UpdateBrandCommandHandlerTests
     public async Task UpdateBrandCommandHandler_Handle_ReturnsBrandResult()
     {
         // Arrange
-        var id = 1;
+        int id = 1;
         var updatedBrand = new BrandInput("Santa Carolina", Country.Chile);
         var handler = new UpdateBrandHandler(_brandRepository);
         var brandResult = new BrandResult
@@ -42,7 +42,7 @@ public class UpdateBrandCommandHandlerTests
         var result = await handler.Handle(command, CancellationToken.None);
 
         // Assert
-        result.Should().NotBeNull();
+        result.Data.Should().NotBeNull();
         result.Data.Should().Be(brandResult);
         A.CallTo(() => _brandRepository.UpdateBrandAsync(id, updatedBrand))
             .MustHaveHappenedOnceExactly();

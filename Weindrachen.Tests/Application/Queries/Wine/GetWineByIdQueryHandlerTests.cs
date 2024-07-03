@@ -49,7 +49,7 @@ public class GetWineByIdQueryHandlerTests
         var result = await handler.Handle(query, CancellationToken.None);
 
         // Assert
-        result.Should().NotBeNull();
+        result.Data.Should().NotBeNull();
         result.Data.Should().BeEquivalentTo(wineResult);
         A.CallTo(() => _wineRepository.GetWineByIdAsync(wineId))
             .MustHaveHappenedOnceExactly();

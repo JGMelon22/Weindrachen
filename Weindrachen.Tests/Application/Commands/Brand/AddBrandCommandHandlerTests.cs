@@ -44,7 +44,7 @@ public class AddBrandCommandHandlerTests
         var result = await handler.Handle(command, CancellationToken.None);
 
         // Assert
-        result.Should().NotBeNull();
+        result.Data.Should().NotBeNull();
         result.Data.Should().BeEquivalentTo(brandResult);
         A.CallTo(() => _brandRepository.AddNewBrandAsync(newBrand))
             .MustHaveHappenedOnceExactly();

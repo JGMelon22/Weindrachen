@@ -60,7 +60,7 @@ public class AddWineCommandHandlerTests
         var result = await handler.Handle(command, CancellationToken.None);
 
         // Assert
-        result.Should().NotBeNull();
+        result.Data.Should().NotBeNull();
         result.Data.Should().BeEquivalentTo(wineResult);
         A.CallTo(() => _wineRepository.AddNewWineAsync(newWine)).MustHaveHappenedOnceExactly();
     }

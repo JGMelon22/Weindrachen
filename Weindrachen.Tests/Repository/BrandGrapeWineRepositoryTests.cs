@@ -87,7 +87,7 @@ public class BrandGrapeWineRepositoryTests
         var result = await _repository.GetAllWinesInformationAsync();
 
         // Assert
-        result.Should().NotBeNull();
+        result.Data.Should().NotBeNull();
         result.Data!.Count().Should().Be(10);
         result.Should().BeOfType<ServiceResponse<IEnumerable<BrandGrapeWineResult>>>();
     }
@@ -96,7 +96,7 @@ public class BrandGrapeWineRepositoryTests
     public async Task BrandGrapeWineRepository_GetWinesInformationByIdAsync_ReturnsWineInfo()
     {
         // Arrange
-        var id = 1;
+        int id = 1;
         var brandGrapeWineResult = new BrandGrapeWineResult
         {
             WineId = id,
@@ -114,7 +114,7 @@ public class BrandGrapeWineRepositoryTests
         var result = await _repository.GetWineInformationByIdAsync(id);
 
         // Assert
-        result.Should().NotBeNull();
+        result.Data.Should().NotBeNull();
         result.Data.Should().BeEquivalentTo(brandGrapeWineResult);
         result.Should().BeOfType<ServiceResponse<BrandGrapeWineResult>>();
     }

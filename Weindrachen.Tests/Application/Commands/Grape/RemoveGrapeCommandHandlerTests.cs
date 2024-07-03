@@ -20,7 +20,7 @@ public class RemoveGrapeCommandHandlerTests
     public async Task RemoveGrapeCommandHandler_Handle_ReturnsSuccess()
     {
         // Arrange
-        var id = 1;
+        int id = 1;
         var handler = new RemoveGrapeHandler(_grapeRepository);
 
         var serviceResponse = new ServiceResponse<bool>();
@@ -34,7 +34,6 @@ public class RemoveGrapeCommandHandlerTests
         var result = await handler.Handle(command, CancellationToken.None);
 
         // Assert
-        result.Should().NotBeNull();
         result.Success.Should().BeTrue();
         A.CallTo(() => _grapeRepository.RemoveGrapeAsync(id))
             .MustHaveHappenedOnceExactly();

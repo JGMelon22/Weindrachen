@@ -90,7 +90,7 @@ public class GrapesControllerTests
     public async Task GrapesController_GetGrapeByIdAsync_ReturnsGrape()
     {
         // Arrange
-        var id = 1;
+        int id = 1;
         var grapeResult = new GrapeResult
         {
             Id = id,
@@ -119,7 +119,7 @@ public class GrapesControllerTests
     public async Task GrapesController_UpdateGrapeAsync_ReturnsGrape()
     {
         // Arrange
-        var id = 1;
+        int id = 1;
         var updatedGrape = new GrapeInput("Pinot noir");
         var validationResult = new ValidationResult();
         var grapeResult = new GrapeResult
@@ -151,7 +151,7 @@ public class GrapesControllerTests
     public async Task GrapesController_RemoveGrapeAsync_ReturnsSuccess()
     {
         // Arrange
-        var id = 1;
+        int id = 1;
         var serviceResponse = new ServiceResponse<bool>();
 
         A.CallTo(() => _mediator.Send(A<RemoveGrapeCommand>.That.Matches(x => x.Id == id), default))

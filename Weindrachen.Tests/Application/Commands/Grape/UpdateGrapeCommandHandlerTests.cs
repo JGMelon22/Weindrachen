@@ -21,7 +21,7 @@ public class UpdateGrapeCommandHandlerTests
     public async Task UpdateGrapeCommandHandler_Handle_ReturnsGrapeResult()
     {
         // Arrange
-        var id = 1;
+        int id = 1;
         var updatedGrape = new GrapeInput("Sangiovese");
         var handler = new UpdateGrapeHandler(_grapeRepository);
         var grapeResult = new GrapeResult
@@ -40,7 +40,7 @@ public class UpdateGrapeCommandHandlerTests
         var result = await handler.Handle(command, CancellationToken.None);
 
         // Assert
-        result.Should().NotBeNull();
+        result.Data.Should().NotBeNull();
         result.Data.Should().Be(grapeResult);
         A.CallTo(() => _grapeRepository.UpdateGrapeAsync(id, updatedGrape))
             .MustHaveHappenedOnceExactly();

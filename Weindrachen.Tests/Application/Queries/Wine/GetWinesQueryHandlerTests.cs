@@ -67,7 +67,7 @@ public class GetWinesQueryHandlerTests
         var result = await handler.Handle(query, CancellationToken.None);
 
         // Assert
-        result.Should().NotBeNull();
+        result.Data.Should().NotBeNull();
         result.Data.Should().BeEquivalentTo(winesResult);
         A.CallTo(() => _wineRepository.GetAllWinesAsync())
             .MustHaveHappened();

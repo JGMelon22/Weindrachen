@@ -75,7 +75,7 @@ public class WineRepositoryTests
         var result = await _repository.AddNewWineAsync(wineInput);
 
         // Assert
-        result.Should().NotBeNull();
+        result.Data.Should().NotBeNull();
         result.Data.Should().Be(wineResult);
         result.Should().BeOfType<ServiceResponse<WineResult>>();
     }
@@ -87,7 +87,7 @@ public class WineRepositoryTests
         var result = await _repository.GetAllWinesAsync();
 
         // Assert
-        result.Should().NotBeNull();
+        result.Data.Should().NotBeNull();
         result.Data!.Count().Should().Be(10);
         result.Should().BeOfType<ServiceResponse<IEnumerable<WineResult>>>();
     }
@@ -96,7 +96,7 @@ public class WineRepositoryTests
     public async Task WineRepository_GetWineById_ReturnsWine()
     {
         // Arrange
-        var id = 1;
+        int id = 1;
         var wineResult = new WineResult
         {
             Id = id,
@@ -112,7 +112,7 @@ public class WineRepositoryTests
         var result = await _repository.GetWineByIdAsync(id);
 
         // Assert
-        result.Should().NotBeNull();
+        result.Data.Should().NotBeNull();
         result.Data.Should().BeEquivalentTo(wineResult);
         result.Should().BeOfType<ServiceResponse<WineResult>>();
     }
@@ -121,7 +121,7 @@ public class WineRepositoryTests
     public async Task WineRepository_UpdateWine_ReturnsWine()
     {
         // Arrange
-        var id = 3;
+        int id = 3;
         var updatedWine = new WineInput(
             "Casillero del Diablo",
             35.00M,
@@ -150,7 +150,7 @@ public class WineRepositoryTests
         var result = await _repository.UpdateWineAsync(id, updatedWine);
 
         // Assert
-        result.Should().NotBeNull();
+        result.Data.Should().NotBeNull();
         result.Data.Should().BeEquivalentTo(wineResult);
         result.Should().BeOfType<ServiceResponse<WineResult>>();
     }
@@ -159,7 +159,7 @@ public class WineRepositoryTests
     public async Task WineRepository_RemoveWine_ReturnsSuccess()
     {
         // Arrange
-        var id = 1;
+        int id = 1;
 
         // Act
         var result = await _repository.RemoveWineAsync(id);

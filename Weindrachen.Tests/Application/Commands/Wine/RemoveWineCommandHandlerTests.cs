@@ -20,7 +20,7 @@ public class RemoveWineCommandHandlerTests
     public async Task RemoveWineCommandHandler_Handle_ReturnsSuccess()
     {
         // Arrange
-        var id = 1;
+        int id = 1;
         var handler = new RemoveWineHandler(_wineRepository);
 
         var serviceResponse = new ServiceResponse<bool>();
@@ -34,7 +34,6 @@ public class RemoveWineCommandHandlerTests
         var result = await handler.Handle(command, CancellationToken.None);
 
         // Assert
-        result.Should().NotBeNull();
         result.Success.Should().BeTrue();
         A.CallTo(() => _wineRepository.RemoveWineAsync(id))
             .MustHaveHappenedOnceExactly();

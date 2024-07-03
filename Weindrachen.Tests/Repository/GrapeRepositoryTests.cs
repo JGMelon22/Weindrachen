@@ -50,7 +50,7 @@ public class GrapeRepositoryTests
         var result = await _repository.AddNewGrapeAsync(newGrape);
 
         // Assert
-        result.Should().NotBeNull();
+        result.Data.Should().NotBeNull();
         result.Data.Should().BeEquivalentTo(grapeResult);
         result.Should().BeOfType<ServiceResponse<GrapeResult>>();
     }
@@ -62,7 +62,7 @@ public class GrapeRepositoryTests
         var result = await _repository.GetAllGrapesAsync();
 
         // Assert
-        result.Should().NotBeNull();
+        result.Data.Should().NotBeNull();
         result.Data!.Count().Should().Be(10);
         result.Should().BeOfType<ServiceResponse<IEnumerable<GrapeResult>>>();
     }
@@ -71,7 +71,7 @@ public class GrapeRepositoryTests
     public async Task GrapeRepository_GetGrapeById_ReturnsGrape()
     {
         // Arrange
-        var id = 1;
+        int id = 1;
         var grapeResult = new GrapeResult
         {
             Id = 1,
@@ -82,7 +82,7 @@ public class GrapeRepositoryTests
         var result = await _repository.GetGrapeByIdAsync(id);
 
         // Assert
-        result.Should().NotBeNull();
+        result.Data.Should().NotBeNull();
         result.Data.Should().BeEquivalentTo(grapeResult);
         result.Should().BeOfType<ServiceResponse<GrapeResult>>();
     }
@@ -91,7 +91,7 @@ public class GrapeRepositoryTests
     public async Task GrapeRepository_UpdateGrape_ReturnsGrapes()
     {
         // Arrange
-        var id = 4;
+        int id = 4;
         var updatedGrape = new GrapeInput("Cabernet Sauvignon");
         var grapeResult = new GrapeResult
         {
@@ -103,7 +103,7 @@ public class GrapeRepositoryTests
         var result = await _repository.UpdateGrapeAsync(id, updatedGrape);
 
         // Assert
-        result.Should().NotBeNull();
+        result.Data.Should().NotBeNull();
         result.Data.Should().BeEquivalentTo(grapeResult);
         result.Should().BeOfType<ServiceResponse<GrapeResult>>();
     }
@@ -112,7 +112,7 @@ public class GrapeRepositoryTests
     public async Task GrapeRepository_RemoveGrape_ReturnsSuccess()
     {
         // Arrange
-        var id = 1;
+        int id = 1;
 
         // Act
         var result = await _repository.RemoveGrapeAsync(id);

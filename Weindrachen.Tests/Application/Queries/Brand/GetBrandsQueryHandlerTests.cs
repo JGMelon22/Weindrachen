@@ -42,7 +42,7 @@ public class GetBrandsQueryHandlerTests
         var result = await handler.Handle(query, CancellationToken.None);
 
         // Assert
-        result.Should().NotBeNull();
+        result.Data.Should().NotBeNull();
         result.Data.Should().BeEquivalentTo(brandsResult);
         A.CallTo(() => _brandRepository.GetAllBrandsAsync())
             .MustHaveHappened();

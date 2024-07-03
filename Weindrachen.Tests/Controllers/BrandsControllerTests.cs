@@ -91,7 +91,7 @@ public class BrandsControllerTests
     public async Task BrandsController_GetBrandByIdAsync_ReturnsBrand()
     {
         // Arrange
-        var id = 1;
+        int id = 1;
         var brandResult = new BrandResult
         {
             Id = id,
@@ -121,7 +121,7 @@ public class BrandsControllerTests
     public async Task BrandsController_UpdateBrandAsync_ReturnsBrand()
     {
         // Arrange
-        var id = 1;
+        int id = 1;
         var updatedBrand = new BrandInput("Gato Negro", Country.Uruguay);
         var validationResult = new ValidationResult();
         var brandResult = new BrandResult
@@ -155,7 +155,7 @@ public class BrandsControllerTests
     public async Task BrandsController_RemoveBrandAsync_ReturnsSuccess()
     {
         // Arrange
-        var id = 1;
+        int id = 1;
         var serviceResponse = new ServiceResponse<bool>();
 
         A.CallTo(() => _mediator.Send(A<RemoveBrandCommand>.That.Matches(x => x.Id == id), default))

@@ -23,7 +23,7 @@ public class UpdateWineCommandHandlerTests
     public async Task UpdateWineCommandHandler_Handle_ReturnsWineResult()
     {
         // Arrange
-        var id = 1;
+        int id = 1;
         var updatedWine = new WineInput("Passo Los Valles",
             27.0M,
             true,
@@ -58,7 +58,7 @@ public class UpdateWineCommandHandlerTests
         var result = await handler.Handle(command, CancellationToken.None);
 
         // Assert
-        result.Should().NotBeNull();
+        result.Data.Should().NotBeNull();
         result.Data.Should().Be(wineResult);
         A.CallTo(() => _wineRepository.UpdateWineAsync(id, updatedWine))
             .MustHaveHappenedOnceExactly();

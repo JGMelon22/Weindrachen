@@ -20,7 +20,7 @@ public class RemoveBrandCommandHandlerTests
     public async Task RemoveBrandCommandHandler_Handle_ReturnsSuccess()
     {
         // Arrange
-        var id = 1;
+        int id = 1;
         var handler = new RemoveBrandHandler(_brandRepository);
 
         var serviceResponse = new ServiceResponse<bool>();
@@ -34,7 +34,6 @@ public class RemoveBrandCommandHandlerTests
         var result = await handler.Handle(command, CancellationToken.None);
 
         // Assert
-        result.Should().NotBeNull();
         result.Success.Should().BeTrue();
         A.CallTo(() => _brandRepository.RemoveBrandAsync(id))
             .MustHaveHappenedOnceExactly();

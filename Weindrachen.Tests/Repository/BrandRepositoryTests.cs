@@ -53,7 +53,7 @@ public class BrandRepositoryTests
         var result = await _repository.AddNewBrandAsync(newBrand);
 
         // Assert
-        result.Should().NotBeNull();
+        result.Data.Should().NotBeNull();
         result.Data.Should().BeEquivalentTo(brandResult);
         result.Should().BeOfType<ServiceResponse<BrandResult>>();
     }
@@ -65,7 +65,7 @@ public class BrandRepositoryTests
         var result = await _repository.GetAllBrandsAsync();
 
         // Assert
-        result.Should().NotBeNull();
+        result.Data.Should().NotBeNull();
         result.Data!.Count().Should().Be(10);
         result.Should().BeOfType<ServiceResponse<IEnumerable<BrandResult>>>();
     }
@@ -74,7 +74,7 @@ public class BrandRepositoryTests
     public async Task BrandRepository_GetBrandById_ReturnsBrand()
     {
         // Arrange
-        var id = 1;
+        int id = 1;
         var brandResult = new BrandResult
         {
             Id = 1,
@@ -86,7 +86,7 @@ public class BrandRepositoryTests
         var result = await _repository.GetBrandByIdAsync(id);
 
         // Assert
-        result.Should().NotBeNull();
+        result.Data.Should().NotBeNull();
         result.Data.Should().BeEquivalentTo(brandResult);
         result.Should().BeOfType<ServiceResponse<BrandResult>>();
     }
@@ -95,7 +95,7 @@ public class BrandRepositoryTests
     public async Task BrandRepository_UpdateBrand_ReturnsBrands()
     {
         // Arrange
-        var id = 4;
+        int id = 4;
         var updatedBrand = new BrandInput("Catena Zapata", Country.Argentina);
         var brandResult = new BrandResult
         {
@@ -108,7 +108,7 @@ public class BrandRepositoryTests
         var result = await _repository.UpdateBrandAsync(id, updatedBrand);
 
         // Assert
-        result.Should().NotBeNull();
+        result.Data.Should().NotBeNull();
         result.Data.Should().BeEquivalentTo(brandResult);
         result.Should().BeOfType<ServiceResponse<BrandResult>>();
     }
@@ -117,7 +117,7 @@ public class BrandRepositoryTests
     public async Task BrandRepository_RemoveBrand_ReturnsSuccess()
     {
         // Arrange
-        var id = 3;
+        int id = 3;
 
         // Act 
         var result = await _repository.RemoveBrandAsync(id);

@@ -42,7 +42,7 @@ public class AddGrapeCommandHandlerTests
         var result = await handler.Handle(command, CancellationToken.None);
 
         // Assert
-        result.Should().NotBeNull();
+        result.Data.Should().NotBeNull();
         result.Data.Should().BeEquivalentTo(grapeResult);
         A.CallTo(() => _grapeRepository.AddNewGrapeAsync(newGrape))
             .MustHaveHappenedOnceExactly();

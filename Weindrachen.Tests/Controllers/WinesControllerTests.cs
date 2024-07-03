@@ -138,7 +138,7 @@ public class WinesControllerTests
     public async Task WinesController_GetWineByIdAsync_ReturnsWine()
     {
         // Arrange
-        var id = 1;
+        int id = 1;
         var wineResult = new WineResult
         {
             Id = id,
@@ -231,7 +231,7 @@ public class WinesControllerTests
     public async Task WinesController_GetAllWinesInformationByIdAsync_ReturnsWineAllInfo()
     {
         // Arrange
-        var id = 1;
+        int id = 1;
         var brandGrapeWineResult = new BrandGrapeWineResult
         {
             WineId = id,
@@ -264,7 +264,7 @@ public class WinesControllerTests
     public async Task WinesController_UpdateWineAsync_ReturnsWine()
     {
         // Arrange
-        var id = 1;
+        int id = 1;
         var updatedWine = new WineInput("Passo Los Valles",
             27.0M,
             true,
@@ -314,7 +314,7 @@ public class WinesControllerTests
     public async Task WinesController_RemoveWineAsync_ReturnsWine()
     {
         // Arrange
-        var id = 1;
+        int id = 1;
         var serviceResponse = new ServiceResponse<bool>();
 
         A.CallTo(() => _mediator.Send(A<RemoveWineCommand>.That.Matches(x => x.Id == id), default))
