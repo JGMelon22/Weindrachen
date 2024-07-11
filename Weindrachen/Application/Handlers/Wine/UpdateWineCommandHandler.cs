@@ -6,11 +6,11 @@ using Weindrachen.Models;
 
 namespace Weindrachen.Application.Handlers.Wine;
 
-public class UpdateWineHandler : IRequestHandler<UpdateWineCommand, ServiceResponse<WineResult>>
+public class UpdateWineCommandHandler : IRequestHandler<UpdateWineCommand, ServiceResponse<WineResult>>
 {
     private readonly IWineRepository _wineRepository;
 
-    public UpdateWineHandler(IWineRepository wineRepository)
+    public UpdateWineCommandHandler(IWineRepository wineRepository)
     {
         _wineRepository = wineRepository;
     }

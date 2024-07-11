@@ -6,11 +6,11 @@ using Weindrachen.Models;
 
 namespace Weindrachen.Application.Handlers.Wine;
 
-public class GetWineByIdHandler : IRequestHandler<GetWineByIdQuery, ServiceResponse<WineResult>>
+public class GetWineByIdQueryHandler : IRequestHandler<GetWineByIdQuery, ServiceResponse<WineResult>>
 {
     private readonly IWineRepository _wineRepository;
 
-    public GetWineByIdHandler(IWineRepository wineRepository)
+    public GetWineByIdQueryHandler(IWineRepository wineRepository)
     {
         _wineRepository = wineRepository;
     }

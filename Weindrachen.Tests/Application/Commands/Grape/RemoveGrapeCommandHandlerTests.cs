@@ -21,7 +21,7 @@ public class RemoveGrapeCommandHandlerTests
     {
         // Arrange
         int id = 1;
-        var handler = new RemoveGrapeHandler(_grapeRepository);
+        var handler = new RemoveGrapeCommandHandler(_grapeRepository);
 
         var serviceResponse = new ServiceResponse<bool>();
 

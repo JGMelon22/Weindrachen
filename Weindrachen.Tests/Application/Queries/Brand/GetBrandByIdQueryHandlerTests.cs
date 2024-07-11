@@ -23,7 +23,7 @@ public class GetBrandByIdQueryHandlerTests
     {
         // Arrange
         var brandId = 1;
-        var handler = new GetBrandByIdHandler(_brandRepository);
+        var handler = new GetBrandByIdQueryHandler(_brandRepository);
         var brandResult = new BrandResult
         {
             Id = brandId,

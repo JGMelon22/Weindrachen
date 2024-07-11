@@ -23,7 +23,7 @@ public class AddBrandCommandHandlerTests
     {
         // Arrange
         var newBrand = new BrandInput("Gato Negro", Country.Chile);
-        var handler = new AddBrandHandler(_brandRepository);
+        var handler = new AddBrandCommandHandler(_brandRepository);
         var brandResult = new BrandResult
         {
             Id = 1,

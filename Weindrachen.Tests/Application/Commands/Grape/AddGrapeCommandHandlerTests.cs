@@ -22,7 +22,7 @@ public class AddGrapeCommandHandlerTests
     {
         // Arrange
         var newGrape = new GrapeInput("Pinot noir");
-        var handler = new AddGrapeHandler(_grapeRepository);
+        var handler = new AddGrapeCommandHandler(_grapeRepository);
         var grapeResult = new GrapeResult
         {
             Id = 1,

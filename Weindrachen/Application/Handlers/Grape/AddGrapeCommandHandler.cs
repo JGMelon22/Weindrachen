@@ -6,11 +6,11 @@ using Weindrachen.Models;
 
 namespace Weindrachen.Application.Handlers.Grape;
 
-public class AddGrapeHandler : IRequestHandler<AddGrapeCommand, ServiceResponse<GrapeResult>>
+public class AddGrapeCommandHandler : IRequestHandler<AddGrapeCommand, ServiceResponse<GrapeResult>>
 {
     private readonly IGrapeRepository _grapeRepository;
 
-    public AddGrapeHandler(IGrapeRepository grapeRepository)
+    public AddGrapeCommandHandler(IGrapeRepository grapeRepository)
     {
         _grapeRepository = grapeRepository;
     }

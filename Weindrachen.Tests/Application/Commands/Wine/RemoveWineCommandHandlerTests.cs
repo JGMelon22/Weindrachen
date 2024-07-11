@@ -21,7 +21,7 @@ public class RemoveWineCommandHandlerTests
     {
         // Arrange
         int id = 1;
-        var handler = new RemoveWineHandler(_wineRepository);
+        var handler = new RemoveWineCommandHandler(_wineRepository);
 
         var serviceResponse = new ServiceResponse<bool>();
 

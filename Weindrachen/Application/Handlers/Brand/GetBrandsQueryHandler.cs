@@ -6,11 +6,11 @@ using Weindrachen.Models;
 
 namespace Weindrachen.Application.Handlers.Brand;
 
-public class GetBrandsHandler : IRequestHandler<GetBrandsQuery, ServiceResponse<IEnumerable<BrandResult>>>
+public class GetBrandsQueryHandler : IRequestHandler<GetBrandsQuery, ServiceResponse<IEnumerable<BrandResult>>>
 {
     private readonly IBrandRepository _brandRepository;
 
-    public GetBrandsHandler(IBrandRepository brandRepository)
+    public GetBrandsQueryHandler(IBrandRepository brandRepository)
     {
         _brandRepository = brandRepository;
     }

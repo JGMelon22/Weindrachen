@@ -35,7 +35,7 @@ public class AddWineCommandHandlerTests
             },
             Taste.Plum
         );
-        var handler = new AddWineHandler(_wineRepository);
+        var handler = new AddWineCommandHandler(_wineRepository);
         var wineResult = new WineResult
         {
             Id = 1,

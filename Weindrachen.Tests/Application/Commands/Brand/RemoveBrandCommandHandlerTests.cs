@@ -21,7 +21,7 @@ public class RemoveBrandCommandHandlerTests
     {
         // Arrange
         int id = 1;
-        var handler = new RemoveBrandHandler(_brandRepository);
+        var handler = new RemoveBrandCommandHandler(_brandRepository);
 
         var serviceResponse = new ServiceResponse<bool>();
 

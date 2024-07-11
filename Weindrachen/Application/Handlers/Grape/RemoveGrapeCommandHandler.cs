@@ -5,11 +5,11 @@ using Weindrachen.Models;
 
 namespace Weindrachen.Application.Handlers.Grape;
 
-public class RemoveGrapeHandler : IRequestHandler<RemoveGrapeCommand, ServiceResponse<bool>>
+public class RemoveGrapeCommandHandler : IRequestHandler<RemoveGrapeCommand, ServiceResponse<bool>>
 {
     private readonly IGrapeRepository _grapeRepository;
 
-    public RemoveGrapeHandler(IGrapeRepository grapeRepository)
+    public RemoveGrapeCommandHandler(IGrapeRepository grapeRepository)
     {
         _grapeRepository = grapeRepository;
     }

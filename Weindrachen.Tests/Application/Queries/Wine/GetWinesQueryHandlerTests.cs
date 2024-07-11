@@ -22,7 +22,7 @@ public class GetWinesQueryHandlerTests
     public async Task GetWinesQueryHandler_Handle_ReturnsWinesResult()
     {
         // Arrange
-        var handler = new GetWineHandler(_wineRepository);
+        var handler = new GetWineQueryHandler(_wineRepository);
         var winesResult = new List<WineResult>
         {
             new()

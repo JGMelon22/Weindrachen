@@ -21,7 +21,7 @@ public class GetBrandsQueryHandlerTests
     public async Task GetBrandsQueryHandler_Handle_ReturnsBrandsResult()
     {
         // Arrange
-        var handler = new GetBrandsHandler(_brandRepository);
+        var handler = new GetBrandsQueryHandler(_brandRepository);
         var brandsResult = new List<BrandResult>
         {
             new() { Id = 1, Name = "Concha y Toro" },

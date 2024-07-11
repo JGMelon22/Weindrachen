@@ -23,7 +23,7 @@ public class UpdateGrapeCommandHandlerTests
         // Arrange
         int id = 1;
         var updatedGrape = new GrapeInput("Sangiovese");
-        var handler = new UpdateGrapeHandler(_grapeRepository);
+        var handler = new UpdateGrapeCommandHandler(_grapeRepository);
         var grapeResult = new GrapeResult
         {
             Id = id,

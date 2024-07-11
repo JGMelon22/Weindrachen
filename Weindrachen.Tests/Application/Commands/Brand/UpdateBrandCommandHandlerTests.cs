@@ -24,7 +24,7 @@ public class UpdateBrandCommandHandlerTests
         // Arrange
         int id = 1;
         var updatedBrand = new BrandInput("Santa Carolina", Country.Chile);
-        var handler = new UpdateBrandHandler(_brandRepository);
+        var handler = new UpdateBrandCommandHandler(_brandRepository);
         var brandResult = new BrandResult
         {
             Id = id,

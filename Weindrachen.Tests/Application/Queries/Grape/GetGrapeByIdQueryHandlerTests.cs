@@ -22,7 +22,7 @@ public class GetGrapeByIdQueryHandlerTests
     {
         // Arrange 
         var grapeId = 1;
-        var handler = new GetGrapeByIdHandler(_grapeRepository);
+        var handler = new GetGrapeByIdQueryHandler(_grapeRepository);
         var grapeResult = new GrapeResult
         {
             Id = grapeId,

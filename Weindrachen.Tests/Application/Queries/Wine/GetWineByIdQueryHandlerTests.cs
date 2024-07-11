@@ -23,7 +23,7 @@ public class GetWineByIdQueryHandlerTests
     {
         // Arrange
         var wineId = 1;
-        var handler = new GetWineByIdHandler(_wineRepository);
+        var handler = new GetWineByIdQueryHandler(_wineRepository);
         var wineResult = new WineResult
         {
             Id = wineId,

@@ -6,18 +6,18 @@ using Weindrachen.Models;
 
 namespace Weindrachen.Application.Handlers.Grape;
 
-public class GetGrapeByIdHandler : IRequestHandler<GetGrapeByIdQuery, ServiceResponse<GrapeResult>>
+public class GetGrapesQueryHandler : IRequestHandler<GetGrapesQuery, ServiceResponse<IEnumerable<GrapeResult>>>
 {
     private readonly IGrapeRepository _grapeRepository;
 
-    public GetGrapeByIdHandler(IGrapeRepository grapeRepository)
+    public GetGrapesQueryHandler(IGrapeRepository grapeRepository)
     {
         _grapeRepository = grapeRepository;
     }
 
-    public async Task<ServiceResponse<GrapeResult>> Handle(GetGrapeByIdQuery request,
+    public async Task<ServiceResponse<IEnumerable<GrapeResult>>> Handle(GetGrapesQuery request,
         CancellationToken cancellationToken)
     {
-        return await _grapeRepository.GetGrapeByIdAsync(request.Id);
+        return await _grapeRepository.GetAllGrapesAsync();
     }
 }

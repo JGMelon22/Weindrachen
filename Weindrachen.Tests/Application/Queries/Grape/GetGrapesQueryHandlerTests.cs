@@ -21,7 +21,7 @@ public class GetGrapesQueryHandlerTests
     public async Task GetGrapesQueryHandler_Handle_ReturnsGrapesResult()
     {
         // Arrange
-        var handler = new GetGrapesHandler(_grapeRepository);
+        var handler = new GetGrapesQueryHandler(_grapeRepository);
         var grapesResult = new List<GrapeResult>
         {
             new() { Id = 1, Name = "Bobal" },
