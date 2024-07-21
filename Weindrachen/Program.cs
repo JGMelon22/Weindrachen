@@ -19,7 +19,7 @@ builder.Services.AddOpenApiDocument(options =>
 builder.Services.AddDbContext<AppDbContext>(options =>
 {
     options.UseMySql(builder.Configuration.GetConnectionString("Default"),
-        new MySqlServerVersion(new Version(8, 4, 0)));
+        new MySqlServerVersion(new Version(8, 4, 1)));
 });
 
 # endregion

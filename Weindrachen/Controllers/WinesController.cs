@@ -72,7 +72,7 @@ public class WinesController : ControllerBase
     public async Task<IActionResult> GetAllWinesAsync()
     {
         var wines = await _mediator.Send(new GetWinesQuery());
-        return wines.Data != null
+        return wines.Data != null && wines.Data.Any()
             ? Ok(wines)
             : NoContent();
     }
@@ -106,7 +106,7 @@ public class WinesController : ControllerBase
     public async Task<IActionResult> GetAllWinesInformationAsync()
     {
         var allWinesInfo = await _mediator.Send(new GetAllWineInfoQuery());
-        return allWinesInfo.Data != null
+        return allWinesInfo.Data != null && allWinesInfo.Data.Any()
             ? Ok(allWinesInfo)
             : NoContent();
     }
@@ -153,7 +153,7 @@ public class WinesController : ControllerBase
     ///         ],
     ///         "taste": "Cherry"
     ///     }
-    /// 
+    ///
     /// </remarks>
     /// <response code="200">Successfully updated a wine</response>
     /// <response code="400">Wine to be updated not found</response>

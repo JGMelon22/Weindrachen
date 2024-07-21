@@ -47,8 +47,7 @@ public class GrapeRepository : IGrapeRepository
         {
             var grapes = await _dbContext.Grapes
                              .AsNoTracking()
-                             .ToListAsync()
-                         ?? throw new Exception("Grape list is empty!");
+                             .ToListAsync();
 
             var grapesResult = grapes.Select(GrapeMapper.GrapeToGrapeResult);
 

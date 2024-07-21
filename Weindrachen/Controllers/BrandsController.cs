@@ -63,7 +63,7 @@ public class BrandsController : ControllerBase
     public async Task<IActionResult> GetAllBrandsAsync()
     {
         var brands = await _mediator.Send(new GetBrandsQuery());
-        return brands.Data != null
+        return brands.Data != null && brands.Data.Any()
             ? Ok(brands)
             : NoContent();
     }

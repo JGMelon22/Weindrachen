@@ -47,8 +47,7 @@ public class WineRepository : IWineRepository
         {
             var wines = await _dbContext.Wines
                             .AsNoTracking()
-                            .ToListAsync()
-                        ?? throw new Exception("Wine list is empty!");
+                            .ToListAsync();
 
             var wineResult = wines.Select(WineMapper.WineToWineResult);
 

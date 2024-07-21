@@ -63,7 +63,7 @@ public class GrapesController : ControllerBase
     public async Task<IActionResult> GetAllGrapesAsync()
     {
         var grapes = await _mediator.Send(new GetGrapesQuery());
-        return grapes.Data != null
+        return grapes.Data != null && grapes.Data.Any()
             ? Ok(grapes)
             : NoContent();
     }
