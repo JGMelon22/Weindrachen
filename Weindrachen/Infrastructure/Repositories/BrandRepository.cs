@@ -114,7 +114,7 @@ public class BrandRepository : IBrandRepository
         {
             var brand = await _dbContext.Brands
                             .FindAsync(id)
-                        ?? throw new Exception("Brand with id {id} not found!");
+                        ?? throw new Exception($"Brand with id {id} not found!");
 
             BrandMapper.ApplyUpdate(updatedBrand, brand);
 
