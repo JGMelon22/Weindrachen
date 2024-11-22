@@ -8,6 +8,6 @@ namespace Weindrachen.Infrastructure.Mappling;
 public static partial class BrandMapper
 {
     public static partial BrandResult BrandToBrandResult(Brand brand);
-    public static partial Brand BrandToBrandInput(BrandInput brand);
+    public static partial Brand BrandInputToBrand(BrandInput brand);
     public static partial void ApplyUpdate(BrandInput updatedBrand, Brand brand);
 }

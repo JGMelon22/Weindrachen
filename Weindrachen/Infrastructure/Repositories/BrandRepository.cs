@@ -21,7 +21,7 @@ public class BrandRepository : IBrandRepository
 
         try
         {
-            var brand = BrandMapper.BrandToBrandInput(newBrand);
+            var brand = BrandMapper.BrandInputToBrand(newBrand);
 
             await _dbContext.AddAsync(brand);
             await _dbContext.SaveChangesAsync();
